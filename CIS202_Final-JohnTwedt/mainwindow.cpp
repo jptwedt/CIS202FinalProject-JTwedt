@@ -7,11 +7,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    m_scene = new QGraphicsScene();
-    ui->graphicsView->setScene(m_scene);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::on_radioButtonMxM_toggled(bool checked){
+
 }

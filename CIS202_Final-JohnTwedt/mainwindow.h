@@ -20,9 +20,7 @@ public:
 public slots:
 
 private slots:
-    void on_radioButtonSxM_clicked(bool checked);
-
-    void on_radioButtonMxM_clicked(bool checked);
+    void on_radioButtonMxM_toggled(bool checked);
 
 private:
     Ui::MainWindow *ui;
