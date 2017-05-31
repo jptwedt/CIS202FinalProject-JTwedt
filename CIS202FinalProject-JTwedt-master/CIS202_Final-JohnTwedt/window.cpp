@@ -1,9 +1,10 @@
 #include "window.h"
 #include <QRadioButton>
+#include "matrix.h"
 
 QGroupBox *Window::createElementBox() {
-    QGroupBox elementBox = ui->TypeBox;
-    QRadioButton *radio1 = ui->
+    //QGroupBox elementBox = ui->TypeBox;
+    //QRadioButton *radio1 = ui->
 }
 
 QGroupBox *Window::createOperationBox() {

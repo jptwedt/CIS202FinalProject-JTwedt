@@ -2,78 +2,76 @@
 #define MATRIX_H
 
 #include <QVector>
-#include "matrix.cpp"
+#include <QtDebug>
 
 class Matrix {
-    Private:
-      QVector<QVector<qreal> >* m_matrix ;
-      int m_rows, m_cols;
-    Public:
-      Matrix();      //constructor
-      Matrix(int rows, int cols);      //constructor
-      ~Matrix();     //destructor
-      bool isValidOperation(Matrix lhs, Matrix rhs);
-         //function will determine whether or not the operation can
-         //be carried out using the rules of matrices
-      bool isValidOperation(qreal lhs, Matrix rhs);
-         //function will determine whether or not the operation can
-         //be carried out using the rules of matrices
-      void emptyMatrix();
-         //clears matrix of entries
-      QString printCSV();
-         //produces a string with contents in .csv format
+private:
+   QVector<QVector<qreal> >* m_matrix ;
+   int m_rows, m_cols;
+ public:
+   Matrix();      //constructor
+   Matrix(int rows, int cols);      //constructor
+   ~Matrix();     //destructor
+      //function will determine whether or not the operation can
+      //be carried out using the rules of matrices
+   void emptyMatrix();
+      //clears matrix of entries
+   QString printCSV();
+      //produces a string with contents in .csv format
+   bool isValidOperation(Matrix *rhs);
+   bool isValidOperation(qreal rhs);
 friend operator+(Matrix lhs, Matrix rhs){
     //for matrix addition
-    if(isValidOperation(lhs,rhs,"add")){
+    if(lhs.isValidOperation(&rhs)){
         //carry on here
     }
     else{
-        std::cout << "invalid operation."
+        qDebug() << "invalid operation.";
     }
 }
-friend operator+(qreal lhs, Matrix rhs){
+friend operator+(Matrix lhs, qreal rhs){
     //for addition of scalar to matrix
-    if(isValidOperation(lhs,rhs,"add")){
+    if(lhs.isValidOperation(rhs)){
         //carry on here
     }
     else{
-        std::cout << "invalid operation."
+        qDebug() << "invalid operation.";
     }
 }
 friend operator-(Matrix lhs, Matrix rhs){
     //for matrix subtraction
-    if(isValidOperation(lhs,rhs,"subtract")){
+    if(lhs.isValidOperation(&rhs)){
         //carry on here
     }
     else{
-        std::cout << "invalid operation."
+        qDebug() << "invalid operation.";
     }
 }
-friend operator-(qreal lhs, Matrix rhs){
+friend operator-(Matrix lhs,qreal rhs){
     //for subtraction of scalar from matrix
-    if(isValidOperation(lhs,rhs,"subtract")){
+    if(lhs.isValidOperation(rhs)){
         //carry on here
     }
     else{
-        std::cout << "invalid operation."
+        qDebug() << "invalid operation.";
     }
 }
 friend operator*(Matrix lhs, Matrix rhs){
     //for matrix multiplication
-    if(isValidOperation(lhs,rhs,"multiply")){
+    if(lhs.isValidOperation(&rhs)){
         //carry on here
     }
     else{
-        std::cout << "invalid operation."
+        qDebug() << "invalid operation.";
     }
 }
-friend operator*(qreal lhs, Matrix rhs){
+friend operator*(Matrix lhs, qreal rhs){
     //for scalar multiplication of matrix
-    if(isValidOperation(lhs,rhs,"multiply")){
+    if(lhs.isValidOperation(rhs)){
         //carry on here
     }
     else{
-        std::cout << "invalid operation."
+        qDebug() << "invalid operation.";
     }
 }
 };

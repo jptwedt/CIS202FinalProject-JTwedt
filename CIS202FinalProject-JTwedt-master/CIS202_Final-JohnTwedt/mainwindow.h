@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QGraphicsScene>
 #include <QGraphicsTextItem>
+#include "outputgview.h"
 
 namespace Ui {
 class MainWindow;
@@ -17,6 +18,11 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
 public slots:
+
+private slots:
+    void on_radioButtonSxM_clicked(bool checked);
+
+    void on_radioButtonMxM_clicked(bool checked);
 
 private:
     Ui::MainWindow *ui;

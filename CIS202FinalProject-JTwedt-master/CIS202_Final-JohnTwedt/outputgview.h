@@ -2,6 +2,8 @@
 #define OUTPUTGVIEW_H
 
 #include <QGraphicsView>
+#include "window.h"
+#include "matrix.h"
 
 class OutputGView : public QGraphicsView {
     Q_OBJECT
