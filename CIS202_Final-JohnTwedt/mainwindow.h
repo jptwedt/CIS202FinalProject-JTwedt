@@ -2,9 +2,11 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QGraphicsScene>
-#include <QGraphicsTextItem>
-#include "outputgview.h"
+#include <QGenericMatrix>
+#include <QTextEdit>
+#include <QRadioButton>
+#include <QLineEdit>
+#include "flowcontrol.h"
 
 namespace Ui {
 class MainWindow;
@@ -24,8 +26,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QGraphicsScene *m_scene;
-    QGraphicsTextItem *m_text;
+    //QGraphicsScene *m_scene;
+    //QGraphicsTextItem *m_text;
 };
 
 #endif // MAINWINDOW_H
