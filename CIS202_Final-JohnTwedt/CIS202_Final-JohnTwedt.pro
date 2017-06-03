@@ -25,13 +25,15 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    flowcontrol.cpp \
-    datahandling.cpp \
-    matrixops.cpp
+    datahandler.cpp \
+    matrix.cpp \
+    textoutput.cpp \
+    regExpRepo.cpp
 
 HEADERS  += mainwindow.h \
-    flowcontrol.h \
-    matrixops.h \
-    datahandling.h
+    datahandler.h \
+    matrix.h \
+    textoutput.h \
+    regExpRepo.h
 
 FORMS    += mainwindow.ui

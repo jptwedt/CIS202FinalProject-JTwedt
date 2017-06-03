@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>581</width>
-    <height>524</height>
+    <height>564</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,13 +17,13 @@
    <string notr="true">background-color: rgb(255, 255, 225);</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
       <x>10</x>
       <y>10</y>
       <width>565</width>
-      <height>474</height>
+      <height>507</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout_3">
@@ -192,7 +192,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditSxMRows_2">
+              <widget class="QLineEdit" name="lineEditSxMRows">
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(253, 254, 238);</string>
                </property>
@@ -211,7 +211,7 @@
               </widget>
              </item>
              <item>
-              <widget class="QLineEdit" name="lineEditSxMCols_2">
+              <widget class="QLineEdit" name="lineEditSxMCols">
                <property name="styleSheet">
                 <string notr="true">background-color: rgb(253, 254, 238);</string>
                </property>
@@ -309,7 +309,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEditSxMRows_4">
+            <widget class="QLineEdit" name="lineEditMxMARows">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -331,7 +331,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="lineEditSxMCols_4">
+            <widget class="QLineEdit" name="lineEditMxMACols">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -507,7 +507,7 @@
       </layout>
      </item>
      <item>
-      <widget class="QTextEdit" name="textEdit">
+      <widget class="QTextEdit" name="textEditTextOut">
        <property name="styleSheet">
         <string notr="true">background-color: rgb(253, 254, 238);</string>
        </property>
@@ -540,40 +540,6 @@ p, li { white-space: pre-wrap; }
      </item>
     </layout>
    </widget>
-   <zorder>TypeBox</zorder>
-   <zorder>operationBox</zorder>
-   <zorder>textEdit</zorder>
-   <zorder>label_7</zorder>
-   <zorder>pushButtonSubmitMxM</zorder>
-   <zorder>groupBoxSxMData</zorder>
-   <zorder>pushButtonSubmitSxM</zorder>
-   <zorder>pushButtonSubmitSxM</zorder>
-   <zorder>label_7</zorder>
-   <zorder>lineEditSxMValues</zorder>
-   <zorder>pushButtonAutofillSxM</zorder>
-   <zorder>lineEditSxMCols_2</zorder>
-   <zorder>label_4</zorder>
-   <zorder>lineEditSxMRows_2</zorder>
-   <zorder>label_3</zorder>
-   <zorder>label_5</zorder>
-   <zorder>lineEditSxMScalar</zorder>
-   <zorder>label_6</zorder>
-   <zorder>label_10</zorder>
-   <zorder>label_16</zorder>
-   <zorder>lineEditSxMRows_4</zorder>
-   <zorder>label_17</zorder>
-   <zorder>lineEditSxMCols_4</zorder>
-   <zorder>label_9</zorder>
-   <zorder>lineEditMxMAValues</zorder>
-   <zorder>pushButtonAutofillMxMA</zorder>
-   <zorder>label_14</zorder>
-   <zorder>label_11</zorder>
-   <zorder>lineEditMxMBRows</zorder>
-   <zorder>label_15</zorder>
-   <zorder>lineEditMxMBCols</zorder>
-   <zorder>label_8</zorder>
-   <zorder>lineEditMxMBValues</zorder>
-   <zorder>pushButtonAutofillMxMB</zorder>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -591,32 +557,32 @@ p, li { white-space: pre-wrap; }
   <connection>
    <sender>radioButtonMxM</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lineEditSxMRows_4</receiver>
+   <receiver>lineEditMxMARows</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>262</x>
-     <y>44</y>
+     <x>306</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>285</x>
-     <y>123</y>
+     <x>316</x>
+     <y>170</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>radioButtonMxM</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lineEditSxMCols_4</receiver>
+   <receiver>lineEditMxMACols</receiver>
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>296</x>
-     <y>45</y>
+     <x>306</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>301</x>
-     <y>169</y>
+     <x>316</x>
+     <y>220</y>
     </hint>
    </hints>
   </connection>
@@ -627,12 +593,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>296</x>
-     <y>37</y>
+     <x>306</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>304</x>
-     <y>318</y>
+     <x>316</x>
+     <y>369</y>
     </hint>
    </hints>
   </connection>
@@ -643,12 +609,12 @@ p, li { white-space: pre-wrap; }
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>294</x>
-     <y>41</y>
+     <x>306</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>294</x>
-     <y>368</y>
+     <x>316</x>
+     <y>419</y>
     </hint>
    </hints>
   </connection>
@@ -659,46 +625,49 @@ p, li { white-space: pre-wrap; }
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>164</x>
-     <y>51</y>
+     <x>306</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>150</x>
-     <y>255</y>
+     <x>155</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>radioButtonMxM</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lineEditSxMRows_2</receiver>
+   <receiver>lineEditSxMRows</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>170</x>
-     <y>55</y>
+     <x>306</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>144</x>
-     <y>327</y>
+     <x>149</x>
+     <y>368</y>
     </hint>
    </hints>
   </connection>
   <connection>
    <sender>radioButtonMxM</sender>
    <signal>toggled(bool)</signal>
-   <receiver>lineEditSxMCols_2</receiver>
+   <receiver>lineEditSxMCols</receiver>
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>176</x>
-     <y>47</y>
+     <x>306</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>371</y>
+     <x>151</x>
+     <y>418</y>
     </hint>
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>flipSxMScalar(Qstring)</slot>
+ </slots>
 </ui>

@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'window.h'
+** Meta object code from reading C++ file 'textoutput.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.8.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../../CIS202FinalProject-JTwedt-master/CIS202_Final-JohnTwedt/window.h"
+#include "../../CIS202_Final-JohnTwedt/textoutput.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'window.h' doesn't include <QObject>."
+#error "The header file 'textoutput.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.8.0. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -20,25 +20,25 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_Window_t {
+struct qt_meta_stringdata_TextOutput_t {
     QByteArrayData data[1];
-    char stringdata0[7];
+    char stringdata0[11];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
-    qptrdiff(offsetof(qt_meta_stringdata_Window_t, stringdata0) + ofs \
+    qptrdiff(offsetof(qt_meta_stringdata_TextOutput_t, stringdata0) + ofs \
         - idx * sizeof(QByteArrayData)) \
     )
-static const qt_meta_stringdata_Window_t qt_meta_stringdata_Window = {
+static const qt_meta_stringdata_TextOutput_t qt_meta_stringdata_TextOutput = {
     {
-QT_MOC_LITERAL(0, 0, 6) // "Window"
+QT_MOC_LITERAL(0, 0, 10) // "TextOutput"
 
     },
-    "Window"
+    "TextOutput"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_Window[] = {
+static const uint qt_meta_data_TextOutput[] = {
 
  // content:
        7,       // revision
@@ -54,7 +54,7 @@ static const uint qt_meta_data_Window[] = {
        0        // eod
 };
 
-void Window::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void TextOutput::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     Q_UNUSED(_o);
     Q_UNUSED(_id);
@@ -62,28 +62,28 @@ void Window::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
     Q_UNUSED(_a);
 }
 
-const QMetaObject Window::staticMetaObject = {
-    { &QWidget::staticMetaObject, qt_meta_stringdata_Window.data,
-      qt_meta_data_Window,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+const QMetaObject TextOutput::staticMetaObject = {
+    { &QTextEdit::staticMetaObject, qt_meta_stringdata_TextOutput.data,
+      qt_meta_data_TextOutput,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
 };
 
 
-const QMetaObject *Window::metaObject() const
+const QMetaObject *TextOutput::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *Window::qt_metacast(const char *_clname)
+void *TextOutput::qt_metacast(const char *_clname)
 {
     if (!_clname) return Q_NULLPTR;
-    if (!strcmp(_clname, qt_meta_stringdata_Window.stringdata0))
-        return static_cast<void*>(const_cast< Window*>(this));
-    return QWidget::qt_metacast(_clname);
+    if (!strcmp(_clname, qt_meta_stringdata_TextOutput.stringdata0))
+        return static_cast<void*>(const_cast< TextOutput*>(this));
+    return QTextEdit::qt_metacast(_clname);
 }
 
-int Window::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int TextOutput::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
-    _id = QWidget::qt_metacall(_c, _id, _a);
+    _id = QTextEdit::qt_metacall(_c, _id, _a);
     if (_id < 0)
         return _id;
     return _id;
