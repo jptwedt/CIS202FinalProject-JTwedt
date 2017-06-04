@@ -10,7 +10,7 @@
 #include <QRegularExpressionMatch>
 #include <QIntValidator>
 #include <QtDebug>
-//#include "flowcontroller.h"
+#include "flowcontroller.h"
 #include "datahandler.h"
 #include "textoutput.h"
 #include "matrix.h"
@@ -38,7 +38,7 @@ class MainWindow : public QMainWindow
     QIntValidator *m_intValidator;
     QRegularExpressionMatch *m_valueParser;
     RegExpRepo *valuesPattern;
-    //FlowController *tControl;
+    FlowController *tControl;
 
 public:
     explicit MainWindow(QWidget *parent = 0);

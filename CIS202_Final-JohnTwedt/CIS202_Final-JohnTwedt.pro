@@ -28,12 +28,14 @@ SOURCES += main.cpp\
     datahandler.cpp \
     matrix.cpp \
     textoutput.cpp \
-    regExpRepo.cpp
+    regExpRepo.cpp \
+    flowcontroller.cpp
 
 HEADERS  += mainwindow.h \
     datahandler.h \
     matrix.h \
     textoutput.h \
-    regExpRepo.h
+    regExpRepo.h \
+    flowcontroller.h
 
 FORMS    += mainwindow.ui

@@ -27,6 +27,10 @@ MainWindow::MainWindow(QWidget *parent) :
    m_pushButtonAutofillMxMA = ui->pushButtonAutofillMxMA;
    m_pushButtonAutofillMxMB = ui->pushButtonAutofillMxMB;
    m_pushButtonSubmitMxM = ui->pushButtonSubmitMxM;
+   tControl = new FlowController();
+   QObject::connect(m_radioButtonAdd, SIGNAL(toggled(bool)),tControl,SLOT(addButtonToggled(bool)));
+   QObject::connect(m_radioButtonSubtract, SIGNAL(toggled(bool)),tControl,SLOT(subtractButtonToggled(bool)));
+   QObject::connect(m_radioButtonMultiply, SIGNAL(toggled(bool)),tControl,SLOT(multiplyButtonToggled(bool)));
    m_intValidator = new QIntValidator(-MAX_ROWS,MAX_COLS,this);
    valuesPattern = new RegExpRepo();
    valuesPattern->setPattern("([+-]?[0-9|.]+)");

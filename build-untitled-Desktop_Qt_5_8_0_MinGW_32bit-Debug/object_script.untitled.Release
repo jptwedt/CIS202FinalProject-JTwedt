@@ -4,8 +4,8 @@ INPUT(
 ./release\datahandler.o
 ./release\matrix.o
 ./release\textoutput.o
-./release\flowcontroller.o
 ./release\regExpRepo.o
+./release\flowcontroller.o
 ./release\moc_mainwindow.o
 ./release\moc_textoutput.o
 ./release\moc_flowcontroller.o

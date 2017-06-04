@@ -1,7 +1,11 @@
 #include "flowcontroller.h"
 #include <QDebug>
-
-FlowController::FlowController(QSignalMapper *parent)
+/*
+ bool radioButtonAdd,radioButtonSubtract,radioButtonMultiply,
+ sxmScalar,sxmRows,sxmCols,sxmVals,mxmARows,mxmACols,mxmAVals,
+ mxmBRows,mxmBCols,mxmBVals;
+ */
+FlowController::FlowController(QObject *parent)
 {
 
 }
@@ -14,6 +18,24 @@ FlowController::~FlowController()
 bool FlowController::getMxmBVals() const
 {
     return mxmBVals;
+}
+
+void FlowController::addButtonToggled(bool status)
+{
+   radioButtonAdd = status;
+   qDebug() << radioButtonAdd << " is current value of radioButtonAdd in tControl.";
+}
+
+void FlowController::subtractButtonToggled(bool status)
+{
+   radioButtonSubtract = status;
+   qDebug() << radioButtonSubtract << " is current value of radioButtonSubtract in tControl.";
+}
+
+void FlowController::multiplyButtonToggled(bool status)
+{
+   radioButtonMultiply = status;
+   qDebug() << radioButtonMultiply << " is current value of radioButtonMultiply in tControl.";
 }
 
 void FlowController::sxmScalarFlipped(bool msg)

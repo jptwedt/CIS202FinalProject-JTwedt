@@ -7,14 +7,15 @@
  *
  */
 
-class FlowController : public QSignalMapper {
+class FlowController : public QObject {
     Q_OBJECT
 private:
-    bool sxmScalar,sxmRows,sxmCols,sxmVals,mxmARows,mxmACols,mxmAVals,
-      mxmBRows,mxmBCols,mxmBVals;
+    bool radioButtonAdd,radioButtonSubtract,radioButtonMultiply,
+    sxmScalar,sxmRows,sxmCols,sxmVals,mxmARows,mxmACols,mxmAVals,
+    mxmBRows,mxmBCols,mxmBVals;
 
 public:
-   explicit FlowController(QSignalMapper *parent = 0);
+   explicit FlowController(QObject *parent = 0);
    ~FlowController();
    bool getSxmScalar() const;
    bool getSxmRows() const;
@@ -28,6 +29,9 @@ public:
    bool getMxmBVals() const;
 
 public slots:
+   void addButtonToggled(bool);
+   void subtractButtonToggled(bool);
+   void multiplyButtonToggled(bool);
    void sxmScalarFlipped(bool);
    void sxmRowsFlipped(bool);
    void sxmColsFlipped(bool);
