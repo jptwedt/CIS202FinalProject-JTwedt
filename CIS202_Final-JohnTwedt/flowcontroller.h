@@ -32,9 +32,9 @@ public slots:
    void addButtonToggled(bool);
    void subtractButtonToggled(bool);
    void multiplyButtonToggled(bool);
-   void sxmScalarFlipped(bool);
-   void sxmRowsFlipped(bool);
-   void sxmColsFlipped(bool);
+   void sxmScalarEdited();
+   void sxmRowsEdited();
+   void sxmColsEdited();
    void sxmValsFlipped(bool);
    void mxmARowsFlipped(bool);
    void mxmAColsFlipped(bool);
@@ -42,6 +42,9 @@ public slots:
    void mxmBRowsFlipped(bool);
    void mxmBColsFlipped(bool);
    void mxmBValsFlipped(bool);
+
+signals:
+   void sxmValsEnabled(bool);
 };
 
 #endif // FLOWCONTROLLER_H

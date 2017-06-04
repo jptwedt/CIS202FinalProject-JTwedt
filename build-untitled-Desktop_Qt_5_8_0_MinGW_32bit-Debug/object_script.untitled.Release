@@ -1,12 +1,12 @@
 INPUT(
 ./release\main.o
 ./release\mainwindow.o
-./release\datahandler.o
 ./release\matrix.o
 ./release\textoutput.o
-./release\regExpRepo.o
 ./release\flowcontroller.o
+./release\validator.o
 ./release\moc_mainwindow.o
 ./release\moc_textoutput.o
 ./release\moc_flowcontroller.o
+./release\moc_validator.o
 );

@@ -7,7 +7,9 @@
  */
 FlowController::FlowController(QObject *parent)
 {
-
+   sxmScalar = false;
+   sxmCols = false;
+   sxmRows = false;
 }
 
 FlowController::~FlowController()
@@ -38,20 +40,31 @@ void FlowController::multiplyButtonToggled(bool status)
    qDebug() << radioButtonMultiply << " is current value of radioButtonMultiply in tControl.";
 }
 
-void FlowController::sxmScalarFlipped(bool msg)
+void FlowController::sxmScalarEdited()
 {
-    sxmScalar = msg;
+    sxmScalar = true;
+    if(sxmCols == true && sxmRows == true){
+       emit sxmValsEnabled(true);
+    }
     qDebug() << sxmScalar << " is the value of sxmScalar in flowcontroller.";
 }
 
-void FlowController::sxmRowsFlipped(bool)
+void FlowController::sxmRowsEdited()
 {
-
+    sxmRows = true;
+    if(sxmScalar == true && sxmRows == true){
+       emit sxmValsEnabled(true);
+    }
+    qDebug() << sxmScalar << " is the value of sxmScalar in flowcontroller.";
 }
 
-void FlowController::sxmColsFlipped(bool)
+void FlowController::sxmColsEdited()
 {
-
+    sxmCols = true;
+    if(sxmScalar == true && sxmRows == true){
+       emit sxmValsEnabled(true);
+    }
+    qDebug() << sxmScalar << " is the value of sxmScalar in flowcontroller.";
 }
 
 void FlowController::sxmValsFlipped(bool)
@@ -133,4 +146,7 @@ bool FlowController::getMxmBCols() const
 bool FlowController::getSxmScalar() const
 {
     return sxmScalar;
+}
+
+void sxmValsEnabled(bool){
 }

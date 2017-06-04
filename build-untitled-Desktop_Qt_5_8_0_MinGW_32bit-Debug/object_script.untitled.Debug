@@ -1,12 +1,12 @@
 INPUT(
 ./debug\main.o
 ./debug\mainwindow.o
-./debug\datahandler.o
 ./debug\matrix.o
 ./debug\textoutput.o
-./debug\regExpRepo.o
 ./debug\flowcontroller.o
+./debug\validator.o
 ./debug\moc_mainwindow.o
 ./debug\moc_textoutput.o
 ./debug\moc_flowcontroller.o
+./debug\moc_validator.o
 );

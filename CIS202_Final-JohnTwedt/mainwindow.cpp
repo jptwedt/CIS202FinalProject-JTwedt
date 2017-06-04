@@ -27,60 +27,24 @@ MainWindow::MainWindow(QWidget *parent) :
    m_pushButtonAutofillMxMA = ui->pushButtonAutofillMxMA;
    m_pushButtonAutofillMxMB = ui->pushButtonAutofillMxMB;
    m_pushButtonSubmitMxM = ui->pushButtonSubmitMxM;
+
+   memberNames = this->children();
+
+
+   validator = new Validator();
+   //validator->setPattern("([+-]?[0-9|.]+)");
    tControl = new FlowController();
    QObject::connect(m_radioButtonAdd, SIGNAL(toggled(bool)),tControl,SLOT(addButtonToggled(bool)));
    QObject::connect(m_radioButtonSubtract, SIGNAL(toggled(bool)),tControl,SLOT(subtractButtonToggled(bool)));
    QObject::connect(m_radioButtonMultiply, SIGNAL(toggled(bool)),tControl,SLOT(multiplyButtonToggled(bool)));
-   m_intValidator = new QIntValidator(-MAX_ROWS,MAX_COLS,this);
-   valuesPattern = new RegExpRepo();
-   valuesPattern->setPattern("([+-]?[0-9|.]+)");
-   m_valueParser = new QRegularExpressionMatch();
+   QObject::connect(m_lineEditSxMCols, SIGNAL(editingFinished()),tControl,SLOT(sxmColsEdited()));
+   QObject::connect(m_lineEditSxMRows, SIGNAL(editingFinished()),tControl,SLOT(sxmRowsEdited()));
+   //QObject::connect(m_lineEditSxMScalar, SIGNAL(editingFinished()),tControl,SLOT(sxmScalarEdited()));
+   QObject::connect(tControl, SIGNAL(sxmValsEnabled(bool)),m_lineEditSxMValues,SLOT(setEnabled(bool)));
+   QObject::connect(m_lineEditSxMScalar, SIGNAL(textChanged(QString)),validator,SLOT(sxmScalarEdited(QString)));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-}
-
-
-void MainWindow::on_lineEditSxMScalar_editingFinished()
-{
-    m_sxmScalar = m_lineEditSxMScalar->text().toDouble();
-    qDebug() << m_sxmScalar << " is the new entry for m_lineEditSxMScalar.";
-    QString temp = "<p>Scalar value:  " + m_lineEditSxMScalar->text() + "</p>";
-    m_textOut->setHtml(temp);
-}
-
-void MainWindow::on_lineEditSxMRows_editingFinished()
-{
-    m_sxmRows = m_lineEditSxMRows->text().toInt();
-    qDebug() << m_sxmRows << " is the new entry for m_lineEditSxMRows.";
-    QString temp = "<p>Matrix Rows: " + m_lineEditSxMRows->text() + "</p>";
-    m_textOut->setHtml(temp);
-}
-
-void MainWindow::on_lineEditSxMCols_editingFinished()
-{
-    m_sxmCols = m_lineEditSxMCols->text().toInt();
-    qDebug() << m_sxmCols << " is the new entry for m_lineEditSxMCols.";
-    QString temp = "<p>Matrix Columns: " + m_lineEditSxMCols->text() + "</p>";
-    m_textOut->setHtml(temp);
-}
-
-void MainWindow::on_lineEditSxMValues_returnPressed()
-{
-    QString temp = m_lineEditSxMValues->text();
-    qDebug() << temp << " is the new entry for m_lineEditSxMValues.";
-}
-
-void MainWindow::on_pushButtonAutofillSxM_clicked()
-{
-    QString temp = m_pushButtonAutofillSxM->text();
-    qDebug() << temp << " is the new entry for m_pushButtonAutofillSxM.";
-}
-
-void MainWindow::on_pushButtonSubmitSxM_clicked()
-{
-    QString temp = m_pushButtonSubmitSxM->text();
-    qDebug() << temp << " is the new entry for m_pushButtonSubmitSxM.";
 }
