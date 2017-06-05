@@ -5,7 +5,9 @@ const int MAX_ROWS = 50;
 const int MAX_COLS = 50;
 
 Validator::Validator(QObject *parent){
-   patternMap = new QMap<QString, QRegExp>;
+   patternMap = new QMap<QString, QRegularExpression*>;
+   //QMapIterator<QString,QRegularExpression*> temp(*patternMap);
+   place = patternMap->begin();
 }
 Validator::~Validator()
 {
@@ -13,19 +15,47 @@ Validator::~Validator()
     delete patternMap;
 }
 
-QRegExp *Validator::pattern() const
+QRegularExpression* Validator::getPattern(const QString &fieldName)
 {
-    //return m_pattern;
+   place = patternMap->find(fieldName);
+   QRegularExpression *result;
+   if(place == patternMap->end()){
+       result->setPattern("pattern not found");
+   }
+   else{
+       result = place.value();
+   }
+   return result;
 }
 
-void Validator::setPattern(QRegExp *pattern)
+void Validator::setPattern(const QString &fieldName, QRegularExpression &pattern)
 {
-    //m_pattern = pattern;
+   (*patternMap)[fieldName] = &pattern;
 }
 
-void Validator::setPattern(const QString &pattern)
+void Validator::setPattern(const QString &fieldName, const QString &pattern)
 {
-    //m_pattern->setPattern(pattern);
+   QRegularExpression *temp = new QRegularExpression(pattern);
+   (*patternMap)[fieldName] = temp;
+}
+
+void Validator::getFieldNames(const QList<QString> *fieldNames)
+{
+   for(int i = 0; i < fieldNames->count(); ++i){
+       QRegularExpression *temp = new QRegularExpression;
+       temp->setPattern("");
+       (*patternMap)[(*fieldNames)[i]] = temp;
+   }
+   place = patternMap->begin();
+   if(place != patternMap->end()){
+      do{
+          qDebug() << place.key() << " : " << place.value()->pattern();
+          place++;
+      }while(place != patternMap->end());
+   }
+   else{
+           qDebug() << "empty fieldname list";
+       }
 }
 
 Validator::sxmScalarEdited(const QString &entry)

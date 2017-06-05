@@ -15,6 +15,27 @@ const QString TextOutput::getContent(QString &itemName){
     return (*content)[itemName];
 }
 
-void TextOutput::getSxMMatrix(const QString &matrix){
+void TextOutput::listenSxMMatrixRdy(const Matrix &matrix)
+{
+
+}
+
+void TextOutput::listenMxMAMatrixRdy(const Matrix &matrixA)
+{
+
+}
+
+void TextOutput::listenMxMBMatrixRdy(const Matrix &matrixB)
+{
+
+}
+
+void TextOutput::listenSxMScalarRdy(const QString &scalar)
+{
+
+}
+
+void TextOutput::formatMatrix(QString memberMatrix, const Matrix &item)
+{
 
 }

@@ -8,28 +8,39 @@ MainWindow::MainWindow(QWidget *parent) :
 {
    ui->setupUi(this);
    memberNames = new QList<QString>;
+   fieldNames = new QList<QString>;
    m_textOut = ui->textEditTextOut;
    memberNames->append("textEditTextOut");
    m_lineEditSxMCols = ui->lineEditSxMCols;
    memberNames->append("lineEditSxMCols");
+   fieldNames->append("lineEditSxMCols");
    m_lineEditSxMRows = ui->lineEditSxMRows;
    memberNames->append("lineEditSxMRows");
+   fieldNames->append("lineEditSxMRows");
    m_lineEditSxMScalar = ui->lineEditSxMScalar;
    memberNames->append("lineEditSxMScalar");
+   fieldNames->append("lineEditSxMScalar");
    m_lineEditSxMValues = ui->lineEditSxMValues;
    memberNames->append("lineEditSxMValues");
+   fieldNames->append("lineEditSxMValues");
    m_lineEditMxMACols = ui->lineEditMxMACols;
    memberNames->append("lineEditMxMACols");
+   fieldNames->append("lineEditMxMACols");
    m_lineEditMxMARows = ui->lineEditMxMARows;
    memberNames->append("lineEditMxMARows");
+   fieldNames->append("lineEditMxMARows");
    m_lineEditMxMAValues = ui->lineEditMxMAValues;
    memberNames->append("lineEditMxMAValues");
+   fieldNames->append("lineEditMxMAValues");
    m_lineEditMxMBCols = ui->lineEditMxMBCols;
    memberNames->append("lineEditMxMBCols");
+   fieldNames->append("lineEditMxMBCols");
    m_lineEditMxMBRows = ui->lineEditMxMBRows;
    memberNames->append("lineEditMxMBRows");
+   fieldNames->append("lineEditMxMBRows");
    m_lineEditMxMBValues = ui->lineEditMxMBValues;
    memberNames->append("lineEditMxMBValues");
+   fieldNames->append("lineEditMxMBValues");
    m_pushButtonAutofillSxM = ui->pushButtonAutofillSxM;
    memberNames->append("pushButtonAutoFillSxM");
    m_pushButtonSubmitSxM = ui->pushButtonSubmitSxM;
@@ -51,12 +62,8 @@ MainWindow::MainWindow(QWidget *parent) :
    m_pushButtonSubmitMxM = ui->pushButtonSubmitMxM;
    memberNames->append("pushButtonSubmitMxM");
 
-   for(int i = 0; i < memberNames->count(); ++i){
-       qDebug() << (*memberNames)[i];
-   }
-
    validator = new Validator();
-   //validator->setPattern("([+-]?[0-9|.]+)");
+   validator->getFieldNames(fieldNames);
    tControl = new FlowController();
    QObject::connect(m_radioButtonAdd, SIGNAL(toggled(bool)),tControl,SLOT(addButtonToggled(bool)));
    QObject::connect(m_radioButtonSubtract, SIGNAL(toggled(bool)),tControl,SLOT(subtractButtonToggled(bool)));

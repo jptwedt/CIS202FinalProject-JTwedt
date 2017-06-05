@@ -9,7 +9,6 @@
 #include <QList>
 #include <QtDebug>
 #include "flowcontroller.h"
-//#include "datahandler.h"
 #include "textoutput.h"
 #include "matrix.h"
 #include "validator.h"
@@ -34,6 +33,7 @@ class MainWindow : public QMainWindow
     Validator *validator;
     FlowController *tControl;
     QList<QString> *memberNames;        //stores the names of ui member items
+    QList<QString> *fieldNames;        //stores the names of ui input field names
 
 public:
     explicit MainWindow(QWidget *parent = 0);
