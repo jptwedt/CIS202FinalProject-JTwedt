@@ -33,7 +33,7 @@ class MainWindow : public QMainWindow
       *m_radioButtonMultiply;
     Validator *validator;
     FlowController *tControl;
-    QList<QObject *> memberNames;        //stores the names of ui member items
+    QList<QString> *memberNames;        //stores the names of ui member items
 
 public:
     explicit MainWindow(QWidget *parent = 0);
