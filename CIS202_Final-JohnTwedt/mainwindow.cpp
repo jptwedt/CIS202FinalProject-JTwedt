@@ -62,7 +62,7 @@ MainWindow::MainWindow(QWidget *parent) :
    m_pushButtonSubmitMxM = ui->pushButtonSubmitMxM;
    memberNames->append("pushButtonSubmitMxM");
 
-   textInjector = new TextOutput;
+   textInjector = new TextInjector;
    textInjector->getMemberNames(memberNames);
 
    m_sxmMatrix = new Matrix;
@@ -76,6 +76,8 @@ MainWindow::MainWindow(QWidget *parent) :
    validator->setFloatPrecision(6);
    tControl = new FlowController();
 
+   QObject::connect(m_radioButtonSxM, SIGNAL(toggled(bool)),tControl,SLOT(sxmSelected(bool)));
+   QObject::connect(m_radioButtonMxM, SIGNAL(toggled(bool)),tControl,SLOT(mxmSelected(bool)));
    QObject::connect(m_radioButtonAdd, SIGNAL(toggled(bool)),tControl,SLOT(addButtonToggled(bool)));
    QObject::connect(m_radioButtonSubtract, SIGNAL(toggled(bool)),tControl,SLOT(subtractButtonToggled(bool)));
    QObject::connect(m_radioButtonMultiply, SIGNAL(toggled(bool)),tControl,SLOT(multiplyButtonToggled(bool)));

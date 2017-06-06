@@ -26,14 +26,14 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += main.cpp\
         mainwindow.cpp \
     matrix.cpp \
-    textoutput.cpp \
     flowcontroller.cpp \
-    validator.cpp
+    validator.cpp \
+    textjector.cpp
 
 HEADERS  += mainwindow.h \
     matrix.h \
-    textoutput.h \
     flowcontroller.h \
-    validator.h
+    validator.h \
+    textinjector.h
 
 FORMS    += mainwindow.ui

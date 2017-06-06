@@ -7,9 +7,24 @@
  */
 FlowController::FlowController(QObject *parent)
 {
+   sxm = true;
+   mxm = false;
+   radioButtonAdd = true;
+   radioButtonSubtract = false;
+   radioButtonMultiply = false;
    sxmScalar = false;
    sxmCols = false;
    sxmRows = false;
+   sxmVals = false;
+   sxmValsOn = false;
+   mxmACols = false;
+   mxmARows = false;
+   mxmAVals = false;
+   mxmAValsOn = false;
+   mxmBCols = false;
+   mxmBRows = false;
+   mxmBVals = false;
+   mxmBValsOn = false;
 }
 
 FlowController::~FlowController()
@@ -20,6 +35,18 @@ FlowController::~FlowController()
 bool FlowController::getMxmBVals() const
 {
     return mxmBVals;
+}
+
+void FlowController::sxmSelected(bool toggle)
+{
+   sxm = toggle;
+   qDebug() << sxm << " sxm val : " << mxm << " mxm val.";
+}
+
+void FlowController::mxmSelected(bool toggle)
+{
+   mxm = toggle;
+   qDebug() << mxm << " mxm val : " << sxm << " sxm val.";
 }
 
 void FlowController::addButtonToggled(bool status)

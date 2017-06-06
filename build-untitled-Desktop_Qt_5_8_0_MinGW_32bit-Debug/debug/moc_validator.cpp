@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Validator_t {
-    QByteArrayData data[25];
-    char stringdata0[301];
+    QByteArrayData data[27];
+    char stringdata0[314];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -43,30 +43,33 @@ QT_MOC_LITERAL(8, 77, 10), // "mxmAValsOK"
 QT_MOC_LITERAL(9, 88, 10), // "mxmBRowsOK"
 QT_MOC_LITERAL(10, 99, 10), // "mxmBColsOK"
 QT_MOC_LITERAL(11, 110, 10), // "mxmBValsOK"
-QT_MOC_LITERAL(12, 121, 15), // "sxmScalarEdited"
-QT_MOC_LITERAL(13, 137, 5), // "entry"
-QT_MOC_LITERAL(14, 143, 13), // "sxmRowsEdited"
-QT_MOC_LITERAL(15, 157, 13), // "sxmColsEdited"
-QT_MOC_LITERAL(16, 171, 13), // "sxmValsEdited"
-QT_MOC_LITERAL(17, 185, 12), // "sxmSubmitted"
-QT_MOC_LITERAL(18, 198, 14), // "mxmARowsEdited"
-QT_MOC_LITERAL(19, 213, 14), // "mxmAColsEdited"
-QT_MOC_LITERAL(20, 228, 14), // "mxmAValsEdited"
-QT_MOC_LITERAL(21, 243, 14), // "mxmBRowsEdited"
-QT_MOC_LITERAL(22, 258, 14), // "mxmBColsEdited"
-QT_MOC_LITERAL(23, 273, 14), // "mxmBValsEdited"
-QT_MOC_LITERAL(24, 288, 12) // "mxmSubmitted"
+QT_MOC_LITERAL(12, 121, 8), // "errorMsg"
+QT_MOC_LITERAL(13, 130, 3), // "msg"
+QT_MOC_LITERAL(14, 134, 15), // "sxmScalarEdited"
+QT_MOC_LITERAL(15, 150, 5), // "entry"
+QT_MOC_LITERAL(16, 156, 13), // "sxmRowsEdited"
+QT_MOC_LITERAL(17, 170, 13), // "sxmColsEdited"
+QT_MOC_LITERAL(18, 184, 13), // "sxmValsEdited"
+QT_MOC_LITERAL(19, 198, 12), // "sxmSubmitted"
+QT_MOC_LITERAL(20, 211, 14), // "mxmARowsEdited"
+QT_MOC_LITERAL(21, 226, 14), // "mxmAColsEdited"
+QT_MOC_LITERAL(22, 241, 14), // "mxmAValsEdited"
+QT_MOC_LITERAL(23, 256, 14), // "mxmBRowsEdited"
+QT_MOC_LITERAL(24, 271, 14), // "mxmBColsEdited"
+QT_MOC_LITERAL(25, 286, 14), // "mxmBValsEdited"
+QT_MOC_LITERAL(26, 301, 12) // "mxmSubmitted"
 
     },
     "Validator\0sxmScalarGood\0\0sxmRowsOK\0"
     "sxmColsOK\0sxmValsOK\0mxmARowsOK\0"
     "mxmAColsOK\0mxmAValsOK\0mxmBRowsOK\0"
-    "mxmBColsOK\0mxmBValsOK\0sxmScalarEdited\0"
-    "entry\0sxmRowsEdited\0sxmColsEdited\0"
-    "sxmValsEdited\0sxmSubmitted\0mxmARowsEdited\0"
-    "mxmAColsEdited\0mxmAValsEdited\0"
-    "mxmBRowsEdited\0mxmBColsEdited\0"
-    "mxmBValsEdited\0mxmSubmitted"
+    "mxmBColsOK\0mxmBValsOK\0errorMsg\0msg\0"
+    "sxmScalarEdited\0entry\0sxmRowsEdited\0"
+    "sxmColsEdited\0sxmValsEdited\0sxmSubmitted\0"
+    "mxmARowsEdited\0mxmAColsEdited\0"
+    "mxmAValsEdited\0mxmBRowsEdited\0"
+    "mxmBColsEdited\0mxmBValsEdited\0"
+    "mxmSubmitted"
 };
 #undef QT_MOC_LITERAL
 
@@ -76,38 +79,39 @@ static const uint qt_meta_data_Validator[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      22,   14, // methods
+      23,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-      10,       // signalCount
+      11,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  124,    2, 0x06 /* Public */,
-       3,    1,  127,    2, 0x06 /* Public */,
-       4,    1,  130,    2, 0x06 /* Public */,
-       5,    1,  133,    2, 0x06 /* Public */,
-       6,    1,  136,    2, 0x06 /* Public */,
-       7,    1,  139,    2, 0x06 /* Public */,
-       8,    1,  142,    2, 0x06 /* Public */,
-       9,    1,  145,    2, 0x06 /* Public */,
-      10,    1,  148,    2, 0x06 /* Public */,
-      11,    1,  151,    2, 0x06 /* Public */,
+       1,    1,  129,    2, 0x06 /* Public */,
+       3,    1,  132,    2, 0x06 /* Public */,
+       4,    1,  135,    2, 0x06 /* Public */,
+       5,    1,  138,    2, 0x06 /* Public */,
+       6,    1,  141,    2, 0x06 /* Public */,
+       7,    1,  144,    2, 0x06 /* Public */,
+       8,    1,  147,    2, 0x06 /* Public */,
+       9,    1,  150,    2, 0x06 /* Public */,
+      10,    1,  153,    2, 0x06 /* Public */,
+      11,    1,  156,    2, 0x06 /* Public */,
+      12,    1,  159,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      12,    1,  154,    2, 0x0a /* Public */,
-      14,    1,  157,    2, 0x0a /* Public */,
-      15,    1,  160,    2, 0x0a /* Public */,
-      16,    1,  163,    2, 0x0a /* Public */,
-      17,    0,  166,    2, 0x0a /* Public */,
-      18,    1,  167,    2, 0x0a /* Public */,
-      19,    1,  170,    2, 0x0a /* Public */,
-      20,    1,  173,    2, 0x0a /* Public */,
-      21,    1,  176,    2, 0x0a /* Public */,
-      22,    1,  179,    2, 0x0a /* Public */,
-      23,    1,  182,    2, 0x0a /* Public */,
-      24,    0,  185,    2, 0x0a /* Public */,
+      14,    1,  162,    2, 0x0a /* Public */,
+      16,    1,  165,    2, 0x0a /* Public */,
+      17,    1,  168,    2, 0x0a /* Public */,
+      18,    1,  171,    2, 0x0a /* Public */,
+      19,    0,  174,    2, 0x0a /* Public */,
+      20,    1,  175,    2, 0x0a /* Public */,
+      21,    1,  178,    2, 0x0a /* Public */,
+      22,    1,  181,    2, 0x0a /* Public */,
+      23,    1,  184,    2, 0x0a /* Public */,
+      24,    1,  187,    2, 0x0a /* Public */,
+      25,    1,  190,    2, 0x0a /* Public */,
+      26,    0,  193,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QReal,    2,
@@ -120,19 +124,20 @@ static const uint qt_meta_data_Validator[] = {
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::Int,    2,
     QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, QMetaType::QString,   13,
 
  // slots: parameters
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
     QMetaType::Int,
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
-    QMetaType::Int, QMetaType::QString,   13,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
+    QMetaType::Int, QMetaType::QString,   15,
     QMetaType::Int,
 
        0        // eod
@@ -154,29 +159,30 @@ void Validator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 7: _t->mxmBRowsOK((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 8: _t->mxmBColsOK((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 9: _t->mxmBValsOK((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 10: { int _r = _t->sxmScalarEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 10: _t->errorMsg((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 11: { int _r = _t->sxmScalarEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 11: { int _r = _t->sxmRowsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 12: { int _r = _t->sxmRowsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 12: { int _r = _t->sxmColsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 13: { int _r = _t->sxmColsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 13: { int _r = _t->sxmValsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 14: { int _r = _t->sxmValsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 14: { int _r = _t->sxmSubmitted();
+        case 15: { int _r = _t->sxmSubmitted();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 15: { int _r = _t->mxmARowsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 16: { int _r = _t->mxmARowsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 16: { int _r = _t->mxmAColsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 17: { int _r = _t->mxmAColsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 17: { int _r = _t->mxmAValsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 18: { int _r = _t->mxmAValsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 18: { int _r = _t->mxmBRowsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 19: { int _r = _t->mxmBRowsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 19: { int _r = _t->mxmBColsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 20: { int _r = _t->mxmBColsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 20: { int _r = _t->mxmBValsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
+        case 21: { int _r = _t->mxmBValsEdited((*reinterpret_cast< const QString(*)>(_a[1])));
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
-        case 21: { int _r = _t->mxmSubmitted();
+        case 22: { int _r = _t->mxmSubmitted();
             if (_a[0]) *reinterpret_cast< int*>(_a[0]) = _r; }  break;
         default: ;
         }
@@ -253,6 +259,13 @@ void Validator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
                 return;
             }
         }
+        {
+            typedef void (Validator::*_t)(const QString & );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Validator::errorMsg)) {
+                *result = 10;
+                return;
+            }
+        }
     }
 }
 
@@ -281,13 +294,13 @@ int Validator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 22)
+        if (_id < 23)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 22;
+        _id -= 23;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 22)
+        if (_id < 23)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 22;
+        _id -= 23;
     }
     return _id;
 }
@@ -360,6 +373,13 @@ void Validator::mxmBValsOK(QString _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 9, _a);
+}
+
+// SIGNAL 10
+void Validator::errorMsg(const QString & _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 10, _a);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE

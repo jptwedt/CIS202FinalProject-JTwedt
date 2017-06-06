@@ -24,7 +24,8 @@ private:
    QMap<QString,QRegularExpression*> *patternMap;
       //stores the regex patterns for field entry
    QMap<QString,QRegularExpression*>::iterator place;
-   int dblPrecision,floatPrecision;
+   int dblPrecision,floatPrecision,sxmRows,sxmCols;
+   bool sxmSubmitEnabled, mxmSubmitEnabled, sxmSelected,mxmSelected;
    QString sxmVals, mxmAVals, mxmBVals;
 public:
     explicit Validator(QObject *parent = 0);
@@ -65,6 +66,7 @@ signals:
     void mxmBRowsOK(int);
     void mxmBColsOK(int);
     void mxmBValsOK(QString);
+    void errorMsg(const QString &msg);
 };
 
 #endif // REGEXPREPO_H

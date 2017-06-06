@@ -4,15 +4,17 @@
 #include <QSignalMapper>
 /*
  * acts as a "gatekeeper" function for enabling/disabling form objects
+ * holds status markers for denoting whether various ui elements are
+ * (or should) be enabled or not, and whether they're selected
  *
  */
 
 class FlowController : public QObject {
     Q_OBJECT
 private:
-    bool radioButtonAdd,radioButtonSubtract,radioButtonMultiply,
-    sxmScalar,sxmRows,sxmCols,sxmVals,mxmARows,mxmACols,mxmAVals,
-    mxmBRows,mxmBCols,mxmBVals;
+    bool mxm,sxm,radioButtonAdd,radioButtonSubtract,radioButtonMultiply,
+    sxmScalar,sxmRows,sxmCols,sxmVals,sxmValsOn,mxmARows,mxmACols,mxmAVals,
+    mxmAValsOn,mxmBRows,mxmBCols,mxmBVals,mxmBValsOn;
 
 public:
    explicit FlowController(QObject *parent = 0);
@@ -29,6 +31,8 @@ public:
    bool getMxmBVals() const;
 
 public slots:
+   void sxmSelected(bool toggle);
+   void mxmSelected(bool toggle);
    void addButtonToggled(bool);
    void subtractButtonToggled(bool);
    void multiplyButtonToggled(bool);
