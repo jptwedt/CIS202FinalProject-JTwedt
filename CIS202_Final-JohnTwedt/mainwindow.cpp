@@ -62,9 +62,17 @@ MainWindow::MainWindow(QWidget *parent) :
    m_pushButtonSubmitMxM = ui->pushButtonSubmitMxM;
    memberNames->append("pushButtonSubmitMxM");
 
+   m_sxmMatrix = new Matrix;
+   m_mxmMatrixA = new Matrix;
+   m_mxmMatrixB = new Matrix;
+
    validator = new Validator();
    validator->getFieldNames(fieldNames);
+   validator->setFieldPattern("lineEditSxMScalar","[+|-]?(0|[1-9][\\d]{0,15})(\\.)?([0-9]){0,15}");
+   validator->setDblPrecision(15);
+   validator->setFloatPrecision(6);
    tControl = new FlowController();
+
    QObject::connect(m_radioButtonAdd, SIGNAL(toggled(bool)),tControl,SLOT(addButtonToggled(bool)));
    QObject::connect(m_radioButtonSubtract, SIGNAL(toggled(bool)),tControl,SLOT(subtractButtonToggled(bool)));
    QObject::connect(m_radioButtonMultiply, SIGNAL(toggled(bool)),tControl,SLOT(multiplyButtonToggled(bool)));
@@ -73,6 +81,7 @@ MainWindow::MainWindow(QWidget *parent) :
    //QObject::connect(m_lineEditSxMScalar, SIGNAL(editingFinished()),tControl,SLOT(sxmScalarEdited()));
    QObject::connect(tControl, SIGNAL(sxmValsEnabled(bool)),m_lineEditSxMValues,SLOT(setEnabled(bool)));
    QObject::connect(m_lineEditSxMScalar, SIGNAL(textChanged(QString)),validator,SLOT(sxmScalarEdited(QString)));
+   QObject::connect(validator, SIGNAL(sxmScalarGood(qreal)),m_sxmMatrix, SLOT(goodScalar(qreal)));
 }
 
 MainWindow::~MainWindow()

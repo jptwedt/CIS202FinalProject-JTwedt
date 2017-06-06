@@ -5,13 +5,15 @@
 
 #include <QtDebug>
 
-class Matrix {
+class Matrix : public QObject {
+    Q_OBJECT
 private:
    qreal** m_matrix;
    int m_rows, m_cols;
+   qreal m_scalar;
 public:
-   Matrix();                        //default constructor
-   Matrix(int rows, int cols);      //constructor
+   explicit Matrix(QObject *parent = 0);                        //default constructor
+   //explicit Matrix(QObject *parent = 0,int rows, int cols);      //constructor
    Matrix(const Matrix &rhs);       //copy constructor
    ~Matrix();                       //destructor
    void emptyMatrix();
@@ -21,6 +23,9 @@ public:
    int cols() const;
    void setCols(int cols);
    qreal **matrix() const;
+
+public slots:
+   void goodScalar(qreal newScalar);
 };
 typedef Matrix* mPtr;
 #endif // MATRIX_H

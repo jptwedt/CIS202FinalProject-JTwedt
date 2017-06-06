@@ -147,6 +147,3 @@ bool FlowController::getSxmScalar() const
 {
     return sxmScalar;
 }
-
-void sxmValsEnabled(bool){
-}

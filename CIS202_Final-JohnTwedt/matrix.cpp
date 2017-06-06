@@ -1,10 +1,11 @@
 #include "matrix.h"
 
-Matrix::Matrix(){
+Matrix::Matrix(QObject *parent){
     m_rows = 0;
     m_cols = 0;
 }
-Matrix::Matrix(int rows, int cols){
+/*
+Matrix::Matrix(QObject *parent, int rows, int cols){
     m_rows = rows;
     m_cols = cols;
     m_matrix = new qreal*[cols];
@@ -12,6 +13,7 @@ Matrix::Matrix(int rows, int cols){
         m_matrix[i] = new qreal[rows];
     }
 }
+*/
 Matrix::Matrix(const Matrix &rhs)
 {
     if(m_rows != 0 || m_cols != 0){
@@ -66,4 +68,10 @@ void Matrix::setCols(int cols)
 qreal **Matrix::matrix() const
 {
     return m_matrix;
+}
+
+void Matrix::goodScalar(qreal newScalar)
+{
+   m_scalar = newScalar;
+   qDebug() << QString::number(m_scalar) << "is inside matrix";
 }

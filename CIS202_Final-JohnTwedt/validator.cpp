@@ -6,14 +6,48 @@ const int MAX_COLS = 50;
 
 Validator::Validator(QObject *parent){
    patternMap = new QMap<QString, QRegularExpression*>;
-   //QMapIterator<QString,QRegularExpression*> temp(*patternMap);
    place = patternMap->begin();
+   dblPrecision = 15;
+   floatPrecision = 6;
 }
 Validator::~Validator()
 {
     patternMap->clear();
     delete patternMap;
 }
+int Validator::getDblPrecision() const
+{
+    return dblPrecision;
+}
+
+void Validator::setDblPrecision(int value)
+{
+    dblPrecision = value;
+    QString temp = QString::number(dblPrecision);
+    QString patternString = "(\\d){0," + temp + "}";
+    QString fieldName = "dblPrecision";
+    setFieldPattern(fieldName,patternString);
+    place = (*patternMap).find(fieldName);
+    qDebug() << place.value()->pattern();
+}
+
+int Validator::getFloatPrecision() const
+{
+    return floatPrecision;
+}
+
+void Validator::setFloatPrecision(int value)
+{
+    floatPrecision = value;
+    QString temp = QString::number(floatPrecision);
+    QString patternString = "(\\d){0," + temp + "}";
+    QString fieldName = "floatPrecision";
+    setFieldPattern(fieldName,patternString);
+    place = (*patternMap).find(fieldName);
+    qDebug() << place.value()->pattern();
+    floatPrecision = value;
+}
+
 
 QRegularExpression* Validator::getPattern(const QString &fieldName)
 {
@@ -28,23 +62,25 @@ QRegularExpression* Validator::getPattern(const QString &fieldName)
    return result;
 }
 
-void Validator::setPattern(const QString &fieldName, QRegularExpression &pattern)
+void Validator::setFieldPattern(const QString &fieldName, QRegularExpression &pattern)
 {
-   (*patternMap)[fieldName] = &pattern;
+   place = patternMap->find(fieldName);
+   if(place == patternMap->end()){
+       (*patternMap)[fieldName] = &pattern;
+   }
+   else{
+       place.value() = &pattern;
+   }
 }
 
-void Validator::setPattern(const QString &fieldName, const QString &pattern)
+void Validator::setFieldPattern(const QString &fieldName, const QString &pattern)
 {
-   QRegularExpression *temp = new QRegularExpression(pattern);
-   (*patternMap)[fieldName] = temp;
-}
-
-void Validator::getFieldNames(const QList<QString> *fieldNames)
-{
-   for(int i = 0; i < fieldNames->count(); ++i){
-       QRegularExpression *temp = new QRegularExpression;
-       temp->setPattern("");
-       (*patternMap)[(*fieldNames)[i]] = temp;
+   place = patternMap->find(fieldName);
+   if(place == patternMap->end()){
+      (*patternMap)[fieldName] = new QRegularExpression(pattern);
+   }
+   else{
+      place.value()->setPattern(pattern);
    }
    place = patternMap->begin();
    if(place != patternMap->end()){
@@ -58,7 +94,21 @@ void Validator::getFieldNames(const QList<QString> *fieldNames)
        }
 }
 
+void Validator::getFieldNames(const QList<QString> *fieldNames)
+{
+   for(int i = 0; i < fieldNames->count(); ++i){
+       QRegularExpression *temp = new QRegularExpression;
+       temp->setPattern("");
+       (*patternMap)[(*fieldNames)[i]] = temp;
+   }
+}
+
 Validator::sxmScalarEdited(const QString &entry)
 {
    qDebug() << entry << " has been sent to the validator.";
+   QRegularExpressionMatch m = (*patternMap)["lineEditSxMScalar"]->match(entry);
+   if(m.hasMatch()){
+       qDebug() << m.captured(0);
+       emit sxmScalarGood(m.captured(0).toDouble());
+   }
 }

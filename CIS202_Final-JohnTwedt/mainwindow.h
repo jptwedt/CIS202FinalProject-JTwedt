@@ -32,6 +32,7 @@ class MainWindow : public QMainWindow
       *m_radioButtonMultiply;
     Validator *validator;
     FlowController *tControl;
+    Matrix *m_sxmMatrix,*m_mxmMatrixA,*m_mxmMatrixB;
     QList<QString> *memberNames;        //stores the names of ui member items
     QList<QString> *fieldNames;        //stores the names of ui input field names
 

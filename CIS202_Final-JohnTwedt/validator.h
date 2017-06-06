@@ -24,22 +24,29 @@ private:
    QMap<QString,QRegularExpression*> *patternMap;
       //stores the regex patterns for field entry
    QMap<QString,QRegularExpression*>::iterator place;
-   //QMapIterator<QString,QRegularExpression*> place;
+   int dblPrecision;
+   int floatPrecision;
 public:
     explicit Validator(QObject *parent = 0);
     ~Validator();
     QRegularExpression *getPattern(const QString &fieldName);
-    void setPattern(const QString &fieldName, QRegularExpression &pattern);
-    void setPattern(const QString &fieldName, const QString &pattern);
+    void setFieldPattern(const QString &fieldName, QRegularExpression &pattern);
+    void setFieldPattern(const QString &fieldName, const QString &pattern);
     void getFieldNames(const QList<QString> *fieldNames);
+
+    int getDblPrecision() const;
+    void setDblPrecision(int value);
+
+    int getFloatPrecision() const;
+    void setFloatPrecision(int value);
 
 public slots:
     sxmScalarEdited(const QString &entry);
 
 signals:
-    sxmScalarOK();
-    sxmRowsOK();
-    sxmColsOK();
+    void sxmScalarGood(qreal);
+    void sxmRowsOK();
+    void sxmColsOK();
 };
 
 #endif // REGEXPREPO_H

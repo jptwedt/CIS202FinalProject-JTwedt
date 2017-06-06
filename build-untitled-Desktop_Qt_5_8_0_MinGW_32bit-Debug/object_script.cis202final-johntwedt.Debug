@@ -6,6 +6,7 @@ INPUT(
 ./debug\flowcontroller.o
 ./debug\validator.o
 ./debug\moc_mainwindow.o
+./debug\moc_matrix.o
 ./debug\moc_textoutput.o
 ./debug\moc_flowcontroller.o
 ./debug\moc_validator.o
