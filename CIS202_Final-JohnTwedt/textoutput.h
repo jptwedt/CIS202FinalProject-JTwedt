@@ -15,7 +15,7 @@ class TextOutput : public QTextEdit {
 private:
    QMap<QString, QString> *content;
    QMap<QString, QString>::iterator place;
-   QString sxmMatrix,mxmMatrixA,mxmMatrixB,scalar;
+   QString m_sxmMatrix,m_mxmMatrixA,m_mxmMatrixB,m_scalar;
    void formatMatrix(QString memberMatrix, const Matrix &item);
 public:
    explicit TextOutput(QTextEdit *parent = 0);
@@ -28,6 +28,10 @@ public slots:
    void listenMxMAMatrixRdy(const QString &mxmAMatrix);
    void listenMxMBMatrixRdy(const QString &mxmBmatrix);
    void listenSxMScalarRdy(const QString &scalar);
+
+signals:
+   void sendHTML(const QString &text);
+   void clearHTML();
 
 };
 

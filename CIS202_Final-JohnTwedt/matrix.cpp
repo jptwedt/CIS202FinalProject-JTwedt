@@ -74,4 +74,5 @@ void Matrix::goodScalar(qreal newScalar)
 {
    m_scalar = newScalar;
    qDebug() << QString::number(m_scalar) << "is inside matrix";
+   emit scalarToFormat(QString::number(m_scalar));
 }

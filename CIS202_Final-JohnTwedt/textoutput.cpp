@@ -1,4 +1,5 @@
 #include "textoutput.h"
+#include <QDebug>
 
 TextOutput::TextOutput(QTextEdit *parent)
 {
@@ -21,11 +22,24 @@ void TextOutput::getMemberNames(QList<QString> *memberNames)
     for(int i = 0; i < memberNames->count(); ++i){
         (*content)[(*memberNames)[i]] = "";
     }
+    /*
     place = content->begin();
     while(place != content->end()){
        qDebug() <<  place.key() << " : " << place.value() << " from textoutput.";
        place++;
     }
+    */
+}
+
+void TextOutput::listenSxMScalarRdy(const QString &scalar)
+{
+   m_scalar = scalar;
+   QString temp = "<p>Scalar: " + m_scalar + "</p>";
+   QString name = "mxmScalar";
+   qDebug() << temp;
+   (*content)[name] = temp;
+   emit clearHTML();
+   emit sendHTML((*content)[name]);
 }
 
 void TextOutput::listenSxMMatrixRdy(const QString &sxmMatrix)
@@ -43,10 +57,6 @@ void TextOutput::listenMxMBMatrixRdy(const QString &mxmBmatrix)
 
 }
 
-void TextOutput::listenSxMScalarRdy(const QString &scalar)
-{
-
-}
 
 void TextOutput::formatMatrix(QString memberMatrix, const Matrix &item)
 {

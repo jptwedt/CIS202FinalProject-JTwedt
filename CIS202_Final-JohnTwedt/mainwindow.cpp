@@ -85,6 +85,9 @@ MainWindow::MainWindow(QWidget *parent) :
    QObject::connect(tControl, SIGNAL(sxmValsEnabled(bool)),m_lineEditSxMValues,SLOT(setEnabled(bool)));
    QObject::connect(m_lineEditSxMScalar, SIGNAL(textChanged(QString)),validator,SLOT(sxmScalarEdited(QString)));
    QObject::connect(validator, SIGNAL(sxmScalarGood(qreal)),m_sxmMatrix, SLOT(goodScalar(qreal)));
+   QObject::connect(m_sxmMatrix, SIGNAL(scalarToFormat(QString)),textInjector, SLOT(listenSxMScalarRdy(QString)));
+   QObject::connect(textInjector, SIGNAL(clearHTML()),m_textOut, SLOT(clear()));
+   QObject::connect(textInjector, SIGNAL(sendHTML(QString)),m_textOut, SLOT(insertHtml(QString)));
 }
 
 MainWindow::~MainWindow()

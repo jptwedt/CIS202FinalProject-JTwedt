@@ -26,6 +26,9 @@ public:
 
 public slots:
    void goodScalar(qreal newScalar);
+
+signals:
+   void scalarToFormat(const QString &output);
 };
 typedef Matrix* mPtr;
 #endif // MATRIX_H
