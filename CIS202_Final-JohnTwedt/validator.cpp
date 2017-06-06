@@ -112,3 +112,58 @@ Validator::sxmScalarEdited(const QString &entry)
        emit sxmScalarGood(m.captured(0).toDouble());
    }
 }
+
+Validator::sxmRowsEdited(const QString &entry)
+{
+
+}
+
+Validator::sxmColsEdited(const QString &entry)
+{
+
+}
+
+Validator::sxmValsEdited(const QString &entry)
+{
+
+}
+
+Validator::sxmSubmitted()
+{
+
+}
+
+Validator::mxmARowsEdited(const QString &entry)
+{
+
+}
+
+Validator::mxmAColsEdited(const QString &entry)
+{
+
+}
+
+Validator::mxmAValsEdited(const QString &entry)
+{
+
+}
+
+Validator::mxmBRowsEdited(const QString &entry)
+{
+
+}
+
+Validator::mxmBColsEdited(const QString &entry)
+{
+
+}
+
+Validator::mxmBValsEdited(const QString &entry)
+{
+
+}
+
+Validator::mxmSubmitted()
+{
+
+}

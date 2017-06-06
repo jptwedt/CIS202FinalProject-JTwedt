@@ -62,6 +62,9 @@ MainWindow::MainWindow(QWidget *parent) :
    m_pushButtonSubmitMxM = ui->pushButtonSubmitMxM;
    memberNames->append("pushButtonSubmitMxM");
 
+   textInjector = new TextOutput;
+   textInjector->getMemberNames(memberNames);
+
    m_sxmMatrix = new Matrix;
    m_mxmMatrixA = new Matrix;
    m_mxmMatrixB = new Matrix;

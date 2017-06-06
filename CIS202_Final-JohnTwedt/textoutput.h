@@ -12,20 +12,23 @@
 
 class TextOutput : public QTextEdit {
    Q_OBJECT
+private:
+   QMap<QString, QString> *content;
+   QMap<QString, QString>::iterator place;
+   QString sxmMatrix,mxmMatrixA,mxmMatrixB,scalar;
+   void formatMatrix(QString memberMatrix, const Matrix &item);
 public:
    explicit TextOutput(QTextEdit *parent = 0);
    ~TextOutput();
    const QString getContent(QString &itemName);
+   void getMemberNames(QList<QString> *memberNames);
+
 public slots:
-   void listenSxMMatrixRdy(const Matrix &matrix);
-   void listenMxMAMatrixRdy(const Matrix &matrix);
-   void listenMxMBMatrixRdy(const Matrix &matrix);
+   void listenSxMMatrixRdy(const QString &sxmMatrix);
+   void listenMxMAMatrixRdy(const QString &mxmAMatrix);
+   void listenMxMBMatrixRdy(const QString &mxmBmatrix);
    void listenSxMScalarRdy(const QString &scalar);
 
-private:
-   QMap<QString, QString> *content;
-   QString sxmMatrix,mxmMatrixA,mxmMatrixB,scalar;
-   void formatMatrix(QString memberMatrix, const Matrix &item);
 };
 
 #endif // TEXTOUTPUT_H

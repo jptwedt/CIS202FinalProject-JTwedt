@@ -8,7 +8,7 @@
 #include <QRegularExpressionMatch>
 #include <QRegularExpressionValidator>
 #include <QLineEdit>
-
+#include "matrix.h"
 /*
  * contains patterns for regex operations
  * performs data validation and parsing of data for handoff to other classes
@@ -24,8 +24,8 @@ private:
    QMap<QString,QRegularExpression*> *patternMap;
       //stores the regex patterns for field entry
    QMap<QString,QRegularExpression*>::iterator place;
-   int dblPrecision;
-   int floatPrecision;
+   int dblPrecision,floatPrecision;
+   QString sxmVals, mxmAVals, mxmBVals;
 public:
     explicit Validator(QObject *parent = 0);
     ~Validator();
@@ -42,11 +42,29 @@ public:
 
 public slots:
     sxmScalarEdited(const QString &entry);
+    sxmRowsEdited(const QString &entry);
+    sxmColsEdited(const QString &entry);
+    sxmValsEdited(const QString &entry);
+    sxmSubmitted();
+    mxmARowsEdited(const QString &entry);
+    mxmAColsEdited(const QString &entry);
+    mxmAValsEdited(const QString &entry);
+    mxmBRowsEdited(const QString &entry);
+    mxmBColsEdited(const QString &entry);
+    mxmBValsEdited(const QString &entry);
+    mxmSubmitted();
 
 signals:
     void sxmScalarGood(qreal);
-    void sxmRowsOK();
-    void sxmColsOK();
+    void sxmRowsOK(int);
+    void sxmColsOK(int);
+    void sxmValsOK(QString);
+    void mxmARowsOK(int);
+    void mxmAColsOK(int);
+    void mxmAValsOK(QString);
+    void mxmBRowsOK(int);
+    void mxmBColsOK(int);
+    void mxmBValsOK(QString);
 };
 
 #endif // REGEXPREPO_H
