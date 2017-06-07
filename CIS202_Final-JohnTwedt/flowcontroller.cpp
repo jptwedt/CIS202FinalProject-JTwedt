@@ -56,12 +56,18 @@ void FlowController::subtractButtonToggled(bool status)
 {
    radioButtonSubtract = status;
    qDebug() << radioButtonSubtract << " is current value of radioButtonSubtract in tControl.";
+   if(radioButtonAdd = true){
+      radioButtonAdd = false;
+   }
 }
 
 void FlowController::multiplyButtonToggled(bool status)
 {
    radioButtonMultiply = status;
    qDebug() << radioButtonMultiply << " is current value of radioButtonMultiply in tControl.";
+   if(radioButtonAdd = true){
+       radioButtonAdd = false;
+   }
 }
 
 void FlowController::sxmScalarGood(bool toggle)
@@ -184,4 +190,3 @@ void FlowController::mxmBValsGood(bool toggle)
    }
    emit enableMxMSubmit(mxmSubmitOn);
 }
-

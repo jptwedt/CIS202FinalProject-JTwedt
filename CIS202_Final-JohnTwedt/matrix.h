@@ -7,6 +7,13 @@
 #include <QtGlobal>
 #include <QTime>
 
+/*
+ * This class is really more of a "layer", in that it handles the operations
+ * between the mathematical objects.  It receives after it has been validated,
+ * gets a signal to perform operations, then sends the results to the
+ * textinjector.
+ */
+
 class Matrix : public QObject {
     Q_OBJECT
 

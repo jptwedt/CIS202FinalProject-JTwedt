@@ -10,10 +10,11 @@
 #include <QRegularExpressionValidator>
 #include <QLineEdit>
 #include "matrix.h"
+
 /*
  * contains patterns for regex operations
- * performs data validation and parsing of data for handoff to other classes
- *
+ * performs data validation and parsing of data for handoff to other classes,
+ * communicating with all layers as it does so.
  */
 
 extern const int MAX_ROWS;   //these are just hard-coded in to prevent ridiculous entries
@@ -26,7 +27,8 @@ private:
       //stores the regex patterns for field entry
    QMap<QString,QRegularExpression*>::iterator place;
    int dblPrecision,floatPrecision,sxmRows,sxmCols,mxmARows,mxmACols,mxmBRows,mxmBCols;
-   bool sxmSubmitEnabled, mxmSubmitEnabled, sxmSelected,mxmSelected;
+   bool sxmSubmitEnabled, mxmSubmitEnabled,sxmSelected,mxmSelected,addSelected,
+      subtractSelected,multiplySelected;
    QStringList sxmVals, mxmAVals, mxmBVals;
 public:
     explicit Validator(QObject *parent = 0);
@@ -42,39 +44,52 @@ public:
     void setFloatPrecision(int value);
 
 public slots:
-    sxmScalarEdited(const QString &entry);
-    sxmRowsEdited(const QString &entry);
-    sxmColsEdited(const QString &entry);
-    sxmValsEdited(const QString &entry);
-    mxmARowsEdited(const QString &entry);
-    mxmAColsEdited(const QString &entry);
-    mxmAValsEdited(const QString &entry);
-    mxmBRowsEdited(const QString &entry);
-    mxmBColsEdited(const QString &entry);
-    mxmBValsEdited(const QString &entry);
-    mxmSubmitted();
-    sxmSubmitted();
+    void addToggled(bool toggle);
+    void subtractToggled(bool toggle);
+    void multiplyToggled(bool toggle);
+    void sxmScalarEdited(const QString &entry);
+    void sxmRowsEdited(const QString &entry);
+    void sxmColsEdited(const QString &entry);
+    void sxmValsEdited(const QString &entry);
+    void mxmARowsEdited(const QString &entry);
+    void mxmAColsEdited(const QString &entry);
+    void mxmAValsEdited(const QString &entry);
+    void mxmBRowsEdited(const QString &entry);
+    void mxmBColsEdited(const QString &entry);
+    void mxmBValsEdited(const QString &entry);
+    void mxmSubmitted();
+    void sxmSubmitted();
 
 signals:
     void sxmScalarGood(qreal);
+    void sxmScalarGood(bool);
     void sxmScalarNoGood(const QString);
     void sxmRowsGood(int);
+    void sxmRowsGood(bool);
     void sxmRowsNoGood(QString);
     void sxmColsGood(int);
+    void sxmColsGood(bool);
     void sxmColsNoGood(QString);
     void sxmValsGood(QStringList);
+    void sxmValsGood(bool);
     void sxmValsNoGood(QString);
     void mxmARowsGood(int);
+    void mxmARowsGood(bool);
     void mxmARowsNoGood(QString);
     void mxmAColsGood(int);
+    void mxmAColsGood(bool);
     void mxmAColsNoGood(QString);
     void mxmAValsGood(QStringList);
+    void mxmAValsGood(bool);
     void mxmAValsNoGood(QString);
     void mxmBRowsGood(int);
+    void mxmBRowsGood(bool);
     void mxmBRowsNoGood(QString);
     void mxmBColsGood(int);
+    void mxmBColsGood(bool);
     void mxmBColsNoGood(QString);
     void mxmBValsGood(QStringList);
+    void mxmBValsGood(bool);
     void mxmBValsNoGood(QString);
     void errorMsg(const QString &msg);
 };

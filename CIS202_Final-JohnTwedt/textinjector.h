@@ -10,6 +10,9 @@
 /*
  * class for formatting and injecting text into the display
  * stores html text entries for output to QTextEdit item
+ *
+ * The class should display incoming entries (with feedback),
+ * then submitted entries with corresponding results.
  */
 
 class TextInjector : public QTextEdit {
@@ -20,6 +23,7 @@ private:
    QString m_sxmMatrix,m_mxmMatrixA,m_mxmMatrixB,m_scalar;
    void formatMatrix(char matrixChar, const QString &incMatrix);
    int m_sxmRows,m_sxmCols,m_mxmARows,m_mxmACols,m_mxmBRows,m_mxmBCols;
+   bool m_sxm,m_mxm;
 public:
    explicit TextInjector(QTextEdit *parent = 0);
    ~TextInjector();
@@ -35,14 +39,20 @@ public slots:
    void listenSxMRowsError(const QString &msg);    //comes from validator
    void listenSxMColsRdy(int cols);   //comes from validator
    void listenSxMColsError(const QString &msg);    //comes from validator
+   void listenSxMValsRdy(const QStringList &msg);   //comes from validator
+   void listenSxMValsError(const QString &msg);   //comes from validator
    void listenMxMARowsRdy(int rows);   //comes from validator
    void listenMxMARowsError(const QString &msg);    //comes from validator
    void listenMxMAColsRdy(int cols);   //comes from validator
    void listenMxMAColsError(const QString &msg);    //comes from validator
+   void listenMxMAValsRdy(const QStringList &msg);   //comes from validator
+   void listenMxMAValsError(const QString &msg);   //comes from validator
    void listenMxMBRowsRdy(int rows);   //comes from validator
    void listenMxMBRowsError(const QString &msg);    //comes from validator
    void listenMxMBColsRdy(int cols);   //comes from validator
    void listenMxMBColsError(const QString &msg);    //comes from validator
+   void listenMxMBValsRdy(const QStringList &msg);   //comes from validator
+   void listenMxMBValsError(const QString &msg);   //comes from validator
    void listenSxMMatrixRdy(const QString &sxmMatrix); //comes from matrix
    void listenMxMAMatrixRdy(const QString &mxmAMatrix); //comes from matrix
    void listenMxMBMatrixRdy(const QString &mxmBmatrix); //comes from matrix
