@@ -4,7 +4,7 @@ INPUT(
 ./debug\matrix.o
 ./debug\flowcontroller.o
 ./debug\validator.o
-./debug\textjector.o
+./debug\textinjector.o
 ./debug\moc_mainwindow.o
 ./debug\moc_matrix.o
 ./debug\moc_flowcontroller.o

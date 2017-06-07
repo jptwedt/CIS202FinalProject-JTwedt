@@ -1,9 +1,6 @@
 #include "validator.h"
 #include <QDebug>
 
-const int MAX_ROWS = 50;
-const int MAX_COLS = 50;
-
 Validator::Validator(QObject *parent){
    patternMap = new QMap<QString, QRegularExpression*>;
    place = patternMap->begin();
@@ -103,62 +100,196 @@ void Validator::getFieldNames(const QList<QString> *fieldNames)
    }
 }
 
+///////////////////////////////////////////SLOTS/////////////////
+
 Validator::sxmScalarEdited(const QString &entry)
 {
    qDebug() << entry << " has been sent to the validator.";
    QRegularExpressionMatch m = (*patternMap)["lineEditSxMScalar"]->match(entry);
    if(m.hasMatch()){
-       qDebug() << m.captured(0);
-       emit sxmScalarGood(m.captured(0).toDouble());
+       //qDebug() << m.captured(0);
+       if(m.captured(0) == entry){
+          emit sxmScalarGood(m.captured(0).toDouble());
+       }
+       else if(entry.isEmpty()){
+          emit sxmScalarNoGood("");
+       }
+       else{
+           emit sxmScalarNoGood("invalid scalar entry");
+       }
    }
 }
 
 Validator::sxmRowsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditSxMRows"]->match(entry);
+   if(m.hasMatch()){
+       //qDebug() << m.captured(0);
+       if(m.captured(0) == entry){
+          emit sxmRowsGood(m.captured(0).toInt());
+       }
+       else if(entry.isEmpty()){
+          emit sxmRowsNoGood("");
+       }
+       else{
+           emit sxmRowsNoGood("invalid row entry");
+       }
+   }
 }
 
 Validator::sxmColsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditSxMCols"]->match(entry);
+   if(m.hasMatch()){
+       //qDebug() << m.captured(0);
+       if(m.captured(0) == entry){
+          emit sxmColsGood(m.captured(0).toInt());
+       }
+       else if(entry.isEmpty()){
+          emit sxmColsNoGood("");
+       }
+       else{
+           emit sxmColsNoGood("invalid column entry");
+       }
+   }
 }
 
 Validator::sxmValsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditSxMVals"]->match(entry);
+   if(m.capturedLength() <= constants::MAX_ROWS * constants::MAX_COLS
+           && m.capturedLength() <= sxmCols * sxmRows){
+      sxmVals = m.capturedTexts();
+      if(m.hasMatch()){
+          //qDebug() << m.captured(0);
+          emit sxmValsGood(sxmVals);
+      }
+      else if(entry.isEmpty()){
+         emit sxmValsNoGood("");
+      }
+      else{
+          emit sxmValsNoGood("invalid scalar entry");
+      }
+   }
+   else{
+          emit sxmValsNoGood("too many entries");
+   }
 }
 
-Validator::sxmSubmitted()
-{
-
-}
 
 Validator::mxmARowsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditMxMARows"]->match(entry);
+   if(m.hasMatch()){
+       //qDebug() << m.captured(0);
+       if(m.captured(0) == entry){
+          emit sxmRowsGood(m.captured(0).toInt());
+       }
+       else if(entry.isEmpty()){
+          emit sxmRowsNoGood("");
+       }
+       else{
+           emit sxmRowsNoGood("invalid row entry");
+       }
+   }
 }
 
 Validator::mxmAColsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditMxMACols"]->match(entry);
+   if(m.hasMatch()){
+       //qDebug() << m.captured(0);
+       if(m.captured(0) == entry){
+          emit sxmColsGood(m.captured(0).toInt());
+       }
+       else if(entry.isEmpty()){
+          emit sxmColsNoGood("");
+       }
+       else{
+           emit sxmColsNoGood("invalid column entry");
+       }
+   }
 }
 
 Validator::mxmAValsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditMxMAVals"]->match(entry);
+   if(m.capturedLength() <= constants::MAX_ROWS * constants::MAX_COLS
+           && m.capturedLength() <= sxmCols * sxmRows){
+      sxmVals = m.capturedTexts();
+      if(m.hasMatch()){
+          //qDebug() << m.captured(0);
+          emit sxmValsGood(sxmVals);
+      }
+      else if(entry.isEmpty()){
+         emit sxmValsNoGood("");
+      }
+      else{
+          emit sxmValsNoGood("invalid scalar entry");
+      }
+   }
+   else{
+          emit sxmValsNoGood("too many entries");
+   }
 }
 
 Validator::mxmBRowsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditMxMBRows"]->match(entry);
+   if(m.hasMatch()){
+       //qDebug() << m.captured(0);
+       if(m.captured(0) == entry){
+          emit sxmRowsGood(m.captured(0).toInt());
+       }
+       else if(entry.isEmpty()){
+          emit sxmRowsNoGood("");
+       }
+       else{
+           emit sxmRowsNoGood("invalid row entry");
+       }
+   }
 }
 
 Validator::mxmBColsEdited(const QString &entry)
 {
-
+   QRegularExpressionMatch m = (*patternMap)["lineEditMxMACols"]->match(entry);
+   if(m.hasMatch()){
+       //qDebug() << m.captured(0);
+       if(m.captured(0) == entry){
+          emit sxmColsGood(m.captured(0).toInt());
+       }
+       else if(entry.isEmpty()){
+          emit sxmColsNoGood("");
+       }
+       else{
+           emit sxmColsNoGood("invalid column entry");
+       }
+   }
 }
 
 Validator::mxmBValsEdited(const QString &entry)
+{
+   QRegularExpressionMatch m = (*patternMap)["lineEditMxMBVals"]->match(entry);
+   if(m.capturedLength() <= constants::MAX_ROWS * constants::MAX_COLS
+           && m.capturedLength() <= sxmCols * sxmRows){
+      sxmVals = m.capturedTexts();
+      if(m.hasMatch()){
+          //qDebug() << m.captured(0);
+          emit sxmValsGood(sxmVals);
+      }
+      else if(entry.isEmpty()){
+         emit sxmValsNoGood("");
+      }
+      else{
+          emit sxmValsNoGood("invalid scalar entry");
+      }
+   }
+   else{
+          emit sxmValsNoGood("too many entries");
+   }
+}
+
+Validator::sxmSubmitted()
 {
 
 }

@@ -1,14 +1,16 @@
 #include "matrix.h"
 
 Matrix::Matrix(QObject *parent){
+    sxm = true;
+    mxm = false;
+    add = true;
+    subtract = false;
+    multiply = false;
     m_rowsa = 0;
     m_colsa = 0;
     m_rowsb = 0;
     m_colsb = 0;
     m_scalar = 0.0;
-    add = true;
-    subtract = false;
-    multiply = false;
     t = QTime::currentTime();
     qsrand((uint)t.msec());
 }
@@ -109,6 +111,29 @@ qreal **Matrix::matrixA() const
     return m_matrixA;
 }
 
+void Matrix::sxmToggled(bool toggle)
+{
+    sxm = toggle;
+    if(!sxm){
+       if(m_colsa != 0){
+           emptyMatrixA();
+       }
+    }
+}
+
+void Matrix::mxmToggled(bool toggle)
+{
+    mxm = toggle;
+    if(!mxm){
+       if(m_colsa != 0){
+           emptyMatrixA();
+       }
+       if(m_colsb != 0){
+           emptyMatrixB();
+       }
+    }
+}
+
 void Matrix::addToggled(bool toggle)
 {
     add = toggle;
@@ -124,14 +149,33 @@ void Matrix::multiplyToggled(bool toggle)
     multiply = toggle;
 }
 
-void Matrix::goodScalar(qreal newScalar)
+void Matrix::goodScalar(qreal scalar)
 {
-   m_scalar = newScalar;
-   qDebug() << QString::number(m_scalar) << "is inside matrix";
-   emit scalarToFormat(QString::number(m_scalar));
+    m_scalar = scalar;
+    emit scalarToFormat(m_scalar);//<<<<<here
 }
 
-void Matrix::goodMatrixA(const QString &ma)
+void Matrix::goodRowsA(int rows)
+{
+    m_rowsa = rows;
+}
+
+void Matrix::goodColsA(int cols)
+{
+    m_colsa = cols;
+}
+
+void Matrix::goodRowsB(int rows)
+{
+    m_rowsb = rows;
+}
+
+void Matrix::goodColsB(int cols)
+{
+    m_colsb = cols;
+}
+
+void Matrix::goodMatrixA(QStringList &ma)
 {
     m_matrixA = new qreal*[m_colsa];
     for(int i = 0; i < m_colsa; ++i){

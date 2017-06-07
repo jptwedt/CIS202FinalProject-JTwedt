@@ -28,12 +28,13 @@ SOURCES += main.cpp\
     matrix.cpp \
     flowcontroller.cpp \
     validator.cpp \
-    textjector.cpp
+    textinjector.cpp
 
 HEADERS  += mainwindow.h \
     matrix.h \
     flowcontroller.h \
     validator.h \
-    textinjector.h
+    textinjector.h \
+    header.hpp
 
 FORMS    += mainwindow.ui

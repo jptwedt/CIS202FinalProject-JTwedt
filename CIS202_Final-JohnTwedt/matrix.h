@@ -1,6 +1,7 @@
 #ifndef MATRIX_H
 #define MATRIX_H
 
+#include <header.hpp>
 #include <QtDebug>
 #include <QString>
 #include <QtGlobal>
@@ -14,7 +15,7 @@ private:
    int m_rowsa,m_colsa,m_rowsb,m_colsb;
    qreal m_scalar;
    QString matrixAVals, matrixBVals;
-   bool add,subtract,multiply;
+   bool add,subtract,multiply,mxm,sxm;
    QTime t;
 
 public:
@@ -37,11 +38,17 @@ public:
    qreal **matrixB() const;
 
 public slots:
+   void sxmToggled(bool toggle);
+   void mxmToggled(bool toggle);
    void addToggled(bool toggle);
    void subtractToggled(bool toggle);
    void multiplyToggled(bool toggle);
-   void goodScalar(qreal newScalar);
-   void goodMatrixA(const QString &ma);
+   void goodScalar(qreal scalar);
+   void goodRowsA(int rows);
+   void goodColsA(int cols);
+   void goodRowsB(int rows);
+   void goodColsB(int cols);
+   void goodMatrixA(QStringList &ma);
    void goodMatrixB(const QString &mb);
    void autofillA();
    void autofillB();
@@ -49,7 +56,7 @@ public slots:
    void mxmSubmitted();
 
 signals:
-   void scalarToFormat(const QString &output);
+   void scalarToFormat(qreal);
    void matrixToFormat(const QString &output);
    void matrixAToFormat(const QString &output);
    void matrixBToFormat(const QString &output);

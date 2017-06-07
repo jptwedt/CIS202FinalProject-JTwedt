@@ -17,6 +17,7 @@ FlowController::FlowController(QObject *parent)
    sxmRows = false;
    sxmVals = false;
    sxmValsOn = false;
+   sxmSubmitOn = false;
    mxmACols = false;
    mxmARows = false;
    mxmAVals = false;
@@ -25,16 +26,12 @@ FlowController::FlowController(QObject *parent)
    mxmBRows = false;
    mxmBVals = false;
    mxmBValsOn = false;
+   mxmSubmitOn = false;
 }
 
 FlowController::~FlowController()
 {
 
-}
-
-bool FlowController::getMxmBVals() const
-{
-    return mxmBVals;
 }
 
 void FlowController::sxmSelected(bool toggle)
@@ -67,110 +64,124 @@ void FlowController::multiplyButtonToggled(bool status)
    qDebug() << radioButtonMultiply << " is current value of radioButtonMultiply in tControl.";
 }
 
-void FlowController::sxmScalarEdited()
+void FlowController::sxmScalarGood(bool toggle)
 {
-    sxmScalar = true;
-    if(sxmCols == true && sxmRows == true){
-       emit sxmValsEnabled(true);
+   sxmScalar = toggle;
+   sxmRows = true;
+   if(sxmCols && sxmScalar && sxmRows){
+      sxmValsOn = true;
+   }
+   else{
+      sxmValsOn = false;
+   }
+   emit enableSxMVals(sxmValsOn);
+}
+
+void FlowController::sxmRowsGood(bool toggle)
+{
+    sxmRows = toggle;
+    if(sxmCols && sxmScalar && sxmRows){
+       sxmValsOn = true;
     }
-    qDebug() << sxmScalar << " is the value of sxmScalar in flowcontroller.";
-}
-
-void FlowController::sxmRowsEdited()
-{
-    sxmRows = true;
-    if(sxmScalar == true && sxmRows == true){
-       emit sxmValsEnabled(true);
+    else{
+       sxmValsOn = false;
     }
-    qDebug() << sxmScalar << " is the value of sxmScalar in flowcontroller.";
+    emit enableSxMVals(sxmValsOn);
 }
 
-void FlowController::sxmColsEdited()
+void FlowController::sxmColsGood(bool toggle)
 {
-    sxmCols = true;
-    if(sxmScalar == true && sxmRows == true){
-       emit sxmValsEnabled(true);
+   sxmCols = toggle;
+   if(sxmCols && sxmScalar && sxmRows){
+      sxmValsOn = true;
+   }
+   else{
+      sxmValsOn = false;
+   }
+   emit enableSxMVals(sxmValsOn);
+}
+
+void FlowController::sxmValsGood(bool toggle)
+{
+   sxmVals = toggle;
+   if(sxmVals){
+       sxmSubmitOn = true;
+   }
+   else{
+       sxmSubmitOn = false;
+   }
+   emit enableSxMSubmit(sxmSubmitOn);
+}
+
+void FlowController::mxmARowsGood(bool toggle)
+{
+    mxmARows = toggle;
+    if(mxmARows && mxmACols){
+       mxmAValsOn = true;
     }
-    qDebug() << sxmScalar << " is the value of sxmScalar in flowcontroller.";
+    else{
+       mxmAValsOn = false;
+    }
+    emit enableMxMAVals(mxmAValsOn);
 }
 
-void FlowController::sxmValsFlipped(bool)
+void FlowController::mxmAColsGood(bool toggle)
 {
-
+    mxmACols = toggle;
+    if(mxmARows && mxmACols){
+       mxmAValsOn = true;
+    }
+    else{
+       mxmAValsOn = false;
+    }
+    emit enableMxMAVals(mxmAValsOn);
 }
 
-void FlowController::mxmARowsFlipped(bool)
+void FlowController::mxmAValsGood(bool toggle)
 {
-
+   mxmAVals = toggle;
+   if(mxmAVals && mxmBVals){
+       mxmSubmitOn = true;
+   }
+   else{
+       mxmSubmitOn = false;
+   }
+   emit enableMxMSubmit(mxmSubmitOn);
 }
 
-void FlowController::mxmAColsFlipped(bool)
+void FlowController::mxmBRowsGood(bool toggle)
 {
-
+    mxmBRows = toggle;
+    if(mxmBRows && mxmBCols){
+       mxmBValsOn = true;
+    }
+    else{
+       mxmBValsOn = false;
+    }
+    emit enableMxMBVals(mxmBValsOn);
 }
 
-void FlowController::mxmAValsFlipped(bool)
+void FlowController::mxmBColsGood(bool toggle)
 {
-
+    mxmBCols = toggle;
+    if(mxmBRows && mxmBCols){
+       mxmBValsOn = true;
+    }
+    else{
+       mxmBValsOn = false;
+    }
+    emit enableMxMBVals(mxmBValsOn);
 }
 
-void FlowController::mxmBRowsFlipped(bool)
+void FlowController::mxmBValsGood(bool toggle)
 {
-
+   mxmBVals = toggle;
+   if(mxmAVals && mxmBVals){
+       mxmSubmitOn = true;
+   }
+   else{
+       mxmSubmitOn = false;
+   }
+   emit enableMxMSubmit(mxmSubmitOn);
 }
 
-void FlowController::mxmBColsFlipped(bool)
-{
-
-}
-
-void FlowController::mxmBValsFlipped(bool)
-{
-
-}
-
-bool FlowController::getSxmRows() const
-{
-    return sxmRows;
-}
-
-bool FlowController::getSxmCols() const
-{
-    return sxmCols;
-}
-
-bool FlowController::getSxmVals() const
-{
-    return sxmVals;
-}
-
-bool FlowController::getMxmARows() const
-{
-    return mxmARows;
-}
-
-bool FlowController::getMxmACols() const
-{
-    return mxmACols;
-}
-
-bool FlowController::getMxmAVals() const
-{
-    return mxmAVals;
-}
-
-bool FlowController::getMxmBRows() const
-{
-    return mxmBRows;
-}
-
-bool FlowController::getMxmBCols() const
-{
-    return mxmBCols;
-}
-
-
-bool FlowController::getSxmScalar() const
-{
-    return sxmScalar;
-}

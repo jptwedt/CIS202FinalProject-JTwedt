@@ -1,6 +1,7 @@
 #ifndef VALIDATOR_H
 #define VALIDATOR_H
 
+#include <header.hpp>
 #include <QMap>
 #include <QMapIterator>
 #include <QString>
@@ -24,9 +25,9 @@ private:
    QMap<QString,QRegularExpression*> *patternMap;
       //stores the regex patterns for field entry
    QMap<QString,QRegularExpression*>::iterator place;
-   int dblPrecision,floatPrecision,sxmRows,sxmCols;
+   int dblPrecision,floatPrecision,sxmRows,sxmCols,mxmARows,mxmACols,mxmBRows,mxmBCols;
    bool sxmSubmitEnabled, mxmSubmitEnabled, sxmSelected,mxmSelected;
-   QString sxmVals, mxmAVals, mxmBVals;
+   QStringList sxmVals, mxmAVals, mxmBVals;
 public:
     explicit Validator(QObject *parent = 0);
     ~Validator();
@@ -37,7 +38,6 @@ public:
 
     int getDblPrecision() const;
     void setDblPrecision(int value);
-
     int getFloatPrecision() const;
     void setFloatPrecision(int value);
 
@@ -46,7 +46,6 @@ public slots:
     sxmRowsEdited(const QString &entry);
     sxmColsEdited(const QString &entry);
     sxmValsEdited(const QString &entry);
-    sxmSubmitted();
     mxmARowsEdited(const QString &entry);
     mxmAColsEdited(const QString &entry);
     mxmAValsEdited(const QString &entry);
@@ -54,18 +53,29 @@ public slots:
     mxmBColsEdited(const QString &entry);
     mxmBValsEdited(const QString &entry);
     mxmSubmitted();
+    sxmSubmitted();
 
 signals:
     void sxmScalarGood(qreal);
-    void sxmRowsOK(int);
-    void sxmColsOK(int);
-    void sxmValsOK(QString);
-    void mxmARowsOK(int);
-    void mxmAColsOK(int);
-    void mxmAValsOK(QString);
-    void mxmBRowsOK(int);
-    void mxmBColsOK(int);
-    void mxmBValsOK(QString);
+    void sxmScalarNoGood(const QString);
+    void sxmRowsGood(int);
+    void sxmRowsNoGood(QString);
+    void sxmColsGood(int);
+    void sxmColsNoGood(QString);
+    void sxmValsGood(QStringList);
+    void sxmValsNoGood(QString);
+    void mxmARowsGood(int);
+    void mxmARowsNoGood(QString);
+    void mxmAColsGood(int);
+    void mxmAColsNoGood(QString);
+    void mxmAValsGood(QStringList);
+    void mxmAValsNoGood(QString);
+    void mxmBRowsGood(int);
+    void mxmBRowsNoGood(QString);
+    void mxmBColsGood(int);
+    void mxmBColsNoGood(QString);
+    void mxmBValsGood(QStringList);
+    void mxmBValsNoGood(QString);
     void errorMsg(const QString &msg);
 };
 

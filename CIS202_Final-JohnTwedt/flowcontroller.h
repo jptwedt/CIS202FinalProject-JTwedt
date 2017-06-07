@@ -1,6 +1,7 @@
 #ifndef FLOWCONTROLLER_H
 #define FLOWCONTROLLER_H
 
+#include <header.hpp>
 #include <QSignalMapper>
 /*
  * acts as a "gatekeeper" function for enabling/disabling form objects
@@ -14,21 +15,11 @@ class FlowController : public QObject {
 private:
     bool mxm,sxm,radioButtonAdd,radioButtonSubtract,radioButtonMultiply,
     sxmScalar,sxmRows,sxmCols,sxmVals,sxmValsOn,mxmARows,mxmACols,mxmAVals,
-    mxmAValsOn,mxmBRows,mxmBCols,mxmBVals,mxmBValsOn;
+    mxmAValsOn,mxmBRows,mxmBCols,mxmBVals,mxmBValsOn,sxmSubmitOn,mxmSubmitOn;
 
 public:
    explicit FlowController(QObject *parent = 0);
    ~FlowController();
-   bool getSxmScalar() const;
-   bool getSxmRows() const;
-   bool getSxmCols() const;
-   bool getSxmVals() const;
-   bool getMxmARows() const;
-   bool getMxmACols() const;
-   bool getMxmAVals() const;
-   bool getMxmBRows() const;
-   bool getMxmBCols() const;
-   bool getMxmBVals() const;
 
 public slots:
    void sxmSelected(bool toggle);
@@ -36,19 +27,23 @@ public slots:
    void addButtonToggled(bool);
    void subtractButtonToggled(bool);
    void multiplyButtonToggled(bool);
-   void sxmScalarEdited();
-   void sxmRowsEdited();
-   void sxmColsEdited();
-   void sxmValsFlipped(bool);
-   void mxmARowsFlipped(bool);
-   void mxmAColsFlipped(bool);
-   void mxmAValsFlipped(bool);
-   void mxmBRowsFlipped(bool);
-   void mxmBColsFlipped(bool);
-   void mxmBValsFlipped(bool);
+   void sxmScalarGood(bool toggle);
+   void sxmRowsGood(bool toggle);
+   void sxmColsGood(bool toggle);
+   void sxmValsGood(bool toggle);
+   void mxmARowsGood(bool toggle);
+   void mxmAColsGood(bool toggle);
+   void mxmAValsGood(bool toggle);
+   void mxmBRowsGood(bool toggle);
+   void mxmBColsGood(bool toggle);
+   void mxmBValsGood(bool toggle);
 
 signals:
-   void sxmValsEnabled(bool);
+   void enableSxMVals(bool);
+   void enableSxMSubmit(bool);
+   void enableMxMAVals(bool);
+   void enableMxMBVals(bool);
+   void enableMxMSubmit(bool);
 };
 
 #endif // FLOWCONTROLLER_H
