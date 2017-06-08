@@ -149,7 +149,7 @@ void Validator::sxmRowsEdited(const QString &entry)
    QRegularExpressionMatch m = (*patternMap)["lineEditSxMRows"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
-       if(m.captured(0) == entry){
+       if(m.captured(0) == entry && m.captured(0).toInt() <= constants::MAX_ROWS){
           emit sxmRowsGood(m.captured(0).toInt());
           emit sxmRowsGood(true);
           qDebug() << m.captured(0) << " being sent from validator.";
@@ -171,7 +171,7 @@ void Validator::sxmColsEdited(const QString &entry)
    QRegularExpressionMatch m = (*patternMap)["lineEditSxMCols"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
-       if(m.captured(0) == entry){
+       if(m.captured(0) == entry && m.captured(0).toInt() <= constants::MAX_COLS){
           emit sxmColsGood(m.captured(0).toInt());
           emit sxmColsGood(true);
        }
@@ -188,32 +188,32 @@ void Validator::sxmColsEdited(const QString &entry)
 
 void Validator::sxmValsEdited(const QString &entry)
 {
-   qDebug() << entry << " has been sent to the validator.";
-   QRegularExpressionMatch m = (*patternMap)["lineEditSxMValues"]->match(entry);
-   if(m.capturedLength() <= constants::MAX_ROWS * constants::MAX_COLS
-           && m.capturedLength() <= sxmCols * sxmRows){
-      sxmVals = m.capturedTexts();
-      for(int i = 0; i < sxmVals.count(); ++i){
-          qDebug() << sxmVals.count();
-          qDebug() << sxmVals[i];
+   //qDebug() << entry << " has been sent to the validator.";
+   //qDebug() << (*patternMap)["lineEditSxMValues"]->pattern() << " is the pattern.";
+   QRegularExpressionMatchIterator reIt = (*patternMap)["lineEditSxMValues"]->globalMatch(entry);
+   while(reIt.hasNext() && sxmVals.size() <= sxmCols * sxmRows){
+      QRegularExpressionMatch m = reIt.next();
+      sxmVals << m.captured(0);
+   }
+   if(sxmVals.count() <= sxmCols * sxmRows && !(sxmVals.isEmpty())){
+      QListIterator<QString> i(sxmVals);
+      while(i.hasNext()){
+          qDebug() << i.next() << "is the next value in i.";
+          qDebug() << sxmVals.size() << "is the size of sxmVals.";
       }
-      if(m.hasMatch()){
-          //qDebug() << m.captured(0);
-          emit sxmValsGood(sxmVals);
-          emit sxmValsGood(true);
-      }
-      else if(entry.isEmpty()){
-          emit sxmValsNoGood("");
-          emit sxmValsGood(false);
-      }
-      else{
-          emit sxmValsNoGood("invalid scalar entry");
-          emit sxmValsGood(false);
-      }
+      emit sxmValsGood(sxmVals);
+      emit sxmValsGood(true);
+      sxmVals.clear();
+   }
+   else if(sxmVals.count() > sxmCols * sxmRows){
+      emit sxmValsNoGood("too many entries");
+      emit sxmValsGood(false);
+      sxmVals.clear();
    }
    else{
-          emit sxmValsNoGood("too many entries");
-          emit sxmValsGood(false);
+      emit sxmValsNoGood("invalid scalar entry");
+      emit sxmValsGood(false);
+      sxmVals.clear();
    }
 }
 
@@ -223,7 +223,7 @@ void Validator::mxmARowsEdited(const QString &entry)
    QRegularExpressionMatch m = (*patternMap)["lineEditMxMARows"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
-       if(m.captured(0) == entry){
+       if(m.captured(0) == entry && m.captured(0).toInt() <= constants::MAX_ROWS){
           emit sxmRowsGood(m.captured(0).toInt());
           emit sxmRowsGood(true);
        }
@@ -244,7 +244,7 @@ void Validator::mxmAColsEdited(const QString &entry)
    QRegularExpressionMatch m = (*patternMap)["lineEditMxMACols"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
-       if(m.captured(0) == entry){
+       if(m.captured(0) == entry && m.captured(0).toInt() <= constants::MAX_COLS){
           emit sxmColsGood(m.captured(0).toInt());
           emit sxmColsGood(true);
        }
@@ -292,7 +292,7 @@ void Validator::mxmBRowsEdited(const QString &entry)
    QRegularExpressionMatch m = (*patternMap)["lineEditMxMBRows"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
-       if(m.captured(0) == entry){
+       if(m.captured(0) == entry && m.captured(0).toInt() <= constants::MAX_COLS){
           emit sxmRowsGood(m.captured(0).toInt());
           emit sxmRowsGood(true);
        }
@@ -313,7 +313,7 @@ void Validator::mxmBColsEdited(const QString &entry)
    QRegularExpressionMatch m = (*patternMap)["lineEditMxMACols"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
-       if(m.captured(0) == entry){
+       if(m.captured(0) == entry && m.captured(0).toInt() <= constants::MAX_COLS){
           emit sxmColsGood(m.captured(0).toInt());
           emit sxmColsGood(true);
        }

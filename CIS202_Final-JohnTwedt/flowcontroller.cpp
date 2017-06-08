@@ -109,6 +109,7 @@ void FlowController::sxmColsGood(bool toggle)
 
 void FlowController::sxmValsGood(bool toggle)
 {
+   qDebug() << "got the " << toggle << " message.";
    sxmVals = toggle;
    if(sxmVals){
        sxmSubmitOn = true;

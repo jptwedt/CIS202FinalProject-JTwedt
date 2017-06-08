@@ -74,7 +74,7 @@ MainWindow::MainWindow(QWidget *parent) :
    validator->setFieldPattern("lineEditSxMScalar","[+|-]?(0|[1-9][\\d]{0,15})(\\.)?([0-9]){0,15}");
    validator->setFieldPattern("lineEditSxMRows","[+]?([1-4][0-9]?|50|[5-9])");
    validator->setFieldPattern("lineEditSxMCols","[+]?([1-4][0-9]?|50|[5-9])");
-   validator->setFieldPattern("lineEditSxMValues","[+|-]?(0|[1-9][\\d]{0,15})(\\.)?([0-9]){0,15}");
+   validator->setFieldPattern("lineEditSxMValues","[+|-]?((\\d+)?\\.(\\d+)|\.(\\d+)|\\d+)");
    validator->setDblPrecision(15);
    validator->setFloatPrecision(6);
    tControl = new FlowController();
@@ -106,6 +106,7 @@ MainWindow::MainWindow(QWidget *parent) :
    QObject::connect(validator, SIGNAL(sxmColsGood(int)),textInjector, SLOT(listenSxMColsRdy(int)));
    QObject::connect(validator, SIGNAL(sxmColsGood(bool)),tControl, SLOT(sxmColsGood(bool)));
    QObject::connect(validator, SIGNAL(sxmColsNoGood(QString)),textInjector, SLOT(listenSxMColsError(QString)));
+   QObject::connect(validator, SIGNAL(sxmValsGood(bool)),tControl, SLOT(sxmValsGood(bool)));
    QObject::connect(validator, SIGNAL(mxmARowsGood(int)),m_mxmMatrixA, SLOT(goodRowsA(int)));
    QObject::connect(validator, SIGNAL(mxmARowsGood(int)),textInjector, SLOT(listenMxMARowsRdy(int)));
    QObject::connect(validator, SIGNAL(mxmARowsGood(bool)),tControl, SLOT(mxmARowsGood(bool)));
