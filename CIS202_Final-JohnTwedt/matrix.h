@@ -18,10 +18,10 @@ class Matrix : public QObject {
     Q_OBJECT
 
 private:
-   qreal **m_matrixA, **m_matrixB;
-   int m_rowsa,m_colsa,m_rowsb,m_colsb;
+   qreal **m_matrixA, **m_matrixB, **m_matrixR;
+   int m_rowsa,m_colsa,m_rowsb,m_colsb, m_rowsr,m_colsr;
    qreal m_scalar;
-   QString matrixAVals, matrixBVals;
+   QStringList matrixAVals, matrixBVals, matrixRVals;
    bool add,subtract,multiply,mxm,sxm;
    QTime t;
 
@@ -55,17 +55,16 @@ public slots:
    void goodColsA(int cols);
    void goodRowsB(int rows);
    void goodColsB(int cols);
-   void goodMatrixA(QStringList &ma);
-   void goodMatrixB(const QString &mb);
+   void goodMatrixA(QStringList ma);
+   void goodMatrixB(QStringList mb);
    void autofillA();
    void autofillB();
    void sxmSubmitted();
    void mxmSubmitted();
 
 signals:
-   void scalarToFormat(qreal);
-   void matrixToFormat(const QString &output);
-   void matrixAToFormat(const QString &output);
-   void matrixBToFormat(const QString &output);
+   void matrixToOutput(int,int,QStringList);
+   void autoFilledMatrixA(QStringList);
+   void autoFilledMatrixB(QStringList);
 };
 #endif // MATRIX_H

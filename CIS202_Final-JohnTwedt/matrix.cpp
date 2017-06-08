@@ -152,7 +152,6 @@ void Matrix::multiplyToggled(bool toggle)
 void Matrix::goodScalar(qreal scalar)
 {
     m_scalar = scalar;
-    emit scalarToFormat(m_scalar);//<<<<<here
 }
 
 void Matrix::goodRowsA(int rows)
@@ -175,22 +174,34 @@ void Matrix::goodColsB(int cols)
     m_colsb = cols;
 }
 
-void Matrix::goodMatrixA(QStringList &ma)
+void Matrix::goodMatrixA(QStringList ma)
 {
+    QStringListIterator iter(ma);
     m_matrixA = new qreal*[m_colsa];
     for(int i = 0; i < m_colsa; ++i){
         m_matrixA[i] = new qreal[m_rowsa];
+        for(int j = 0; j < m_rowsa; ++j){
+           if(iter.hasNext()){
+              m_matrixA[i][j] = iter.next().toDouble();
+              qDebug() << m_matrixA[i][j];
+           }
+           else{
+               m_matrixA[i][j] = 0;
+           }
+        }
     }
-    //<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~parse string into matrix
 }
 
-void Matrix::goodMatrixB(const QString &mb)
+void Matrix::goodMatrixB(QStringList mb)
 {
     m_matrixB = new qreal*[m_colsb];
     for(int i = 0; i < m_colsb; ++i){
         m_matrixB[i] = new qreal[m_rowsb];
+        for(int j = 0; j < m_rowsb; ++j){
+            m_matrixB[i][j] = mb.at((i * j) + j).toDouble();
+            qDebug() << m_matrixB[i][j];
+        }
     }
-    //<~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~parse string into matrix
 }
 
 void Matrix::autofillA()

@@ -196,11 +196,13 @@ void Validator::sxmValsEdited(const QString &entry)
       sxmVals << m.captured(0);
    }
    if(sxmVals.count() <= sxmCols * sxmRows && !(sxmVals.isEmpty())){
+      /*
       QListIterator<QString> i(sxmVals);
       while(i.hasNext()){
           qDebug() << i.next() << "is the next value in i.";
           qDebug() << sxmVals.size() << "is the size of sxmVals.";
       }
+      */
       emit sxmValsGood(sxmVals);
       emit sxmValsGood(true);
       sxmVals.clear();
@@ -261,28 +263,34 @@ void Validator::mxmAColsEdited(const QString &entry)
 
 void Validator::mxmAValsEdited(const QString &entry)
 {
-   qDebug() << entry << " has been sent to the validator.";
-   QRegularExpressionMatch m = (*patternMap)["lineEditMxMAVals"]->match(entry);
-   if(m.capturedLength() <= constants::MAX_ROWS * constants::MAX_COLS
-           && m.capturedLength() <= sxmCols * sxmRows){
-      sxmVals = m.capturedTexts();
-      if(m.hasMatch()){
-          //qDebug() << m.captured(0);
-          emit sxmValsGood(sxmVals);
-          emit sxmValsGood(true);
+   //qDebug() << entry << " has been sent to the validator.";
+   //qDebug() << (*patternMap)["lineEditSxMValues"]->pattern() << " is the pattern.";
+   QRegularExpressionMatchIterator reIt = (*patternMap)["lineEditMxMAValues"]->globalMatch(entry);
+   while(reIt.hasNext() && mxmAVals.size() <= mxmACols * mxmARows){
+      QRegularExpressionMatch m = reIt.next();
+      mxmAVals << m.captured(0);
+   }
+   if(mxmAVals.count() <= mxmACols * mxmARows && !(mxmAVals.isEmpty())){
+      /*
+      QListIterator<QString> i(mxmAVals);
+      while(i.hasNext()){
+          qDebug() << i.next() << "is the next value in i.";
+          qDebug() << mxmAVals.size() << "is the size of mxmAVals.";
       }
-      else if(entry.isEmpty()){
-          emit sxmValsNoGood("");
-          emit sxmValsGood(false);
-      }
-      else{
-          emit sxmValsNoGood("invalid scalar entry");
-          emit sxmValsGood(false);
-      }
+      */
+      emit mxmAValsGood(mxmAVals);
+      emit mxmAValsGood(true);
+      mxmAVals.clear();
+   }
+   else if(mxmAVals.count() > mxmACols * mxmARows){
+      emit mxmAValsNoGood("too many entries");
+      emit mxmAValsGood(false);
+      mxmAVals.clear();
    }
    else{
-          emit sxmValsNoGood("too many entries");
-          emit sxmValsGood(false);
+      emit mxmAValsNoGood("invalid scalar entry");
+      emit mxmAValsGood(false);
+      mxmAVals.clear();
    }
 }
 
@@ -330,28 +338,34 @@ void Validator::mxmBColsEdited(const QString &entry)
 
 void Validator::mxmBValsEdited(const QString &entry)
 {
-   qDebug() << entry << " has been sent to the validator.";
-   QRegularExpressionMatch m = (*patternMap)["lineEditMxMBVals"]->match(entry);
-   if(m.capturedLength() <= constants::MAX_ROWS * constants::MAX_COLS
-           && m.capturedLength() <= sxmCols * sxmRows){
-      sxmVals = m.capturedTexts();
-      if(m.hasMatch()){
-          //qDebug() << m.captured(0);
-          emit sxmValsGood(sxmVals);
-          emit sxmValsGood(true);
+   //qDebug() << entry << " has been sent to the validator.";
+   //qDebug() << (*patternMap)["lineEditSxMValues"]->pattern() << " is the pattern.";
+   QRegularExpressionMatchIterator reIt = (*patternMap)["lineEditMxMAValues"]->globalMatch(entry);
+   while(reIt.hasNext() && mxmBVals.size() <= mxmBCols * mxmBRows){
+      QRegularExpressionMatch m = reIt.next();
+      mxmBVals << m.captured(0);
+   }
+   if(mxmBVals.count() <= mxmBCols * mxmBRows && !(mxmBVals.isEmpty())){
+      /*
+      QListIterator<QString> i(mxmBVals);
+      while(i.hasNext()){
+          qDebug() << i.next() << "is the next value in i.";
+          qDebug() << mxmBVals.size() << "is the size of mxmBVals.";
       }
-      else if(entry.isEmpty()){
-          emit sxmValsNoGood("");
-          emit sxmValsGood(false);
-      }
-      else{
-          emit sxmValsNoGood("invalid scalar entry");
-          emit sxmValsGood(false);
-      }
+      */
+      emit mxmBValsGood(mxmBVals);
+      emit mxmBValsGood(true);
+      mxmBVals.clear();
+   }
+   else if(mxmBVals.count() > mxmBCols * mxmBRows){
+      emit mxmBValsNoGood("too many entries");
+      emit mxmBValsGood(false);
+      mxmBVals.clear();
    }
    else{
-          emit sxmValsNoGood("too many entries");
-          emit sxmValsGood(false);
+      emit mxmBValsNoGood("invalid scalar entry");
+      emit mxmBValsGood(false);
+      mxmBVals.clear();
    }
 }
 

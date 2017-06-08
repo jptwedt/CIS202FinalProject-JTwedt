@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_TextInjector_t {
-    QByteArrayData data[38];
-    char stringdata0[567];
+    QByteArrayData data[40];
+    char stringdata0[594];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -68,7 +68,9 @@ QT_MOC_LITERAL(33, 495, 9), // "sxmMatrix"
 QT_MOC_LITERAL(34, 505, 19), // "listenMxMAMatrixRdy"
 QT_MOC_LITERAL(35, 525, 10), // "mxmAMatrix"
 QT_MOC_LITERAL(36, 536, 19), // "listenMxMBMatrixRdy"
-QT_MOC_LITERAL(37, 556, 10) // "mxmBmatrix"
+QT_MOC_LITERAL(37, 556, 10), // "mxmBmatrix"
+QT_MOC_LITERAL(38, 567, 18), // "listenMatrixResult"
+QT_MOC_LITERAL(39, 586, 7) // "rMatrix"
 
     },
     "TextInjector\0sendHTML\0\0text\0clearHTML\0"
@@ -85,7 +87,8 @@ QT_MOC_LITERAL(37, 556, 10) // "mxmBmatrix"
     "listenMxMBColsError\0listenMxMBValsRdy\0"
     "listenMxMBValsError\0listenSxMMatrixRdy\0"
     "sxmMatrix\0listenMxMAMatrixRdy\0mxmAMatrix\0"
-    "listenMxMBMatrixRdy\0mxmBmatrix"
+    "listenMxMBMatrixRdy\0mxmBmatrix\0"
+    "listenMatrixResult\0rMatrix"
 };
 #undef QT_MOC_LITERAL
 
@@ -95,7 +98,7 @@ static const uint qt_meta_data_TextInjector[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      27,   14, // methods
+      28,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -103,35 +106,36 @@ static const uint qt_meta_data_TextInjector[] = {
        2,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  149,    2, 0x06 /* Public */,
-       4,    0,  152,    2, 0x06 /* Public */,
+       1,    1,  154,    2, 0x06 /* Public */,
+       4,    0,  157,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    1,  153,    2, 0x0a /* Public */,
-       7,    1,  156,    2, 0x0a /* Public */,
-       8,    1,  159,    2, 0x0a /* Public */,
-      10,    1,  162,    2, 0x0a /* Public */,
-      12,    1,  165,    2, 0x0a /* Public */,
-      14,    1,  168,    2, 0x0a /* Public */,
-      15,    1,  171,    2, 0x0a /* Public */,
-      17,    1,  174,    2, 0x0a /* Public */,
-      18,    1,  177,    2, 0x0a /* Public */,
-      19,    1,  180,    2, 0x0a /* Public */,
-      20,    1,  183,    2, 0x0a /* Public */,
-      21,    1,  186,    2, 0x0a /* Public */,
-      22,    1,  189,    2, 0x0a /* Public */,
-      23,    1,  192,    2, 0x0a /* Public */,
-      24,    1,  195,    2, 0x0a /* Public */,
-      25,    1,  198,    2, 0x0a /* Public */,
-      26,    1,  201,    2, 0x0a /* Public */,
-      27,    1,  204,    2, 0x0a /* Public */,
-      28,    1,  207,    2, 0x0a /* Public */,
-      29,    1,  210,    2, 0x0a /* Public */,
-      30,    1,  213,    2, 0x0a /* Public */,
-      31,    1,  216,    2, 0x0a /* Public */,
-      32,    1,  219,    2, 0x0a /* Public */,
-      34,    1,  222,    2, 0x0a /* Public */,
-      36,    1,  225,    2, 0x0a /* Public */,
+       5,    1,  158,    2, 0x0a /* Public */,
+       7,    1,  161,    2, 0x0a /* Public */,
+       8,    1,  164,    2, 0x0a /* Public */,
+      10,    1,  167,    2, 0x0a /* Public */,
+      12,    1,  170,    2, 0x0a /* Public */,
+      14,    1,  173,    2, 0x0a /* Public */,
+      15,    1,  176,    2, 0x0a /* Public */,
+      17,    1,  179,    2, 0x0a /* Public */,
+      18,    1,  182,    2, 0x0a /* Public */,
+      19,    1,  185,    2, 0x0a /* Public */,
+      20,    1,  188,    2, 0x0a /* Public */,
+      21,    1,  191,    2, 0x0a /* Public */,
+      22,    1,  194,    2, 0x0a /* Public */,
+      23,    1,  197,    2, 0x0a /* Public */,
+      24,    1,  200,    2, 0x0a /* Public */,
+      25,    1,  203,    2, 0x0a /* Public */,
+      26,    1,  206,    2, 0x0a /* Public */,
+      27,    1,  209,    2, 0x0a /* Public */,
+      28,    1,  212,    2, 0x0a /* Public */,
+      29,    1,  215,    2, 0x0a /* Public */,
+      30,    1,  218,    2, 0x0a /* Public */,
+      31,    1,  221,    2, 0x0a /* Public */,
+      32,    1,  224,    2, 0x0a /* Public */,
+      34,    1,  227,    2, 0x0a /* Public */,
+      36,    1,  230,    2, 0x0a /* Public */,
+      38,    3,  233,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -163,6 +167,7 @@ static const uint qt_meta_data_TextInjector[] = {
     QMetaType::Void, QMetaType::QString,   33,
     QMetaType::Void, QMetaType::QString,   35,
     QMetaType::Void, QMetaType::QString,   37,
+    QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::QStringList,   13,   16,   39,
 
        0        // eod
 };
@@ -200,6 +205,7 @@ void TextInjector::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id
         case 24: _t->listenSxMMatrixRdy((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 25: _t->listenMxMAMatrixRdy((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 26: _t->listenMxMBMatrixRdy((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 27: _t->listenMatrixResult((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< const QStringList(*)>(_a[3]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -247,13 +253,13 @@ int TextInjector::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 27)
+        if (_id < 28)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 27;
+        _id -= 28;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 27)
+        if (_id < 28)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 27;
+        _id -= 28;
     }
     return _id;
 }

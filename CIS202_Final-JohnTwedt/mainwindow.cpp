@@ -106,6 +106,8 @@ MainWindow::MainWindow(QWidget *parent) :
    QObject::connect(validator, SIGNAL(sxmColsGood(int)),textInjector, SLOT(listenSxMColsRdy(int)));
    QObject::connect(validator, SIGNAL(sxmColsGood(bool)),tControl, SLOT(sxmColsGood(bool)));
    QObject::connect(validator, SIGNAL(sxmColsNoGood(QString)),textInjector, SLOT(listenSxMColsError(QString)));
+   QObject::connect(validator, SIGNAL(sxmValsGood(QStringList)),textInjector, SLOT(listenSxMValsRdy(QStringList)));
+   QObject::connect(validator, SIGNAL(sxmValsGood(QStringList)),m_sxmMatrix, SLOT(goodMatrixA(QStringList)));
    QObject::connect(validator, SIGNAL(sxmValsGood(bool)),tControl, SLOT(sxmValsGood(bool)));
    QObject::connect(validator, SIGNAL(mxmARowsGood(int)),m_mxmMatrixA, SLOT(goodRowsA(int)));
    QObject::connect(validator, SIGNAL(mxmARowsGood(int)),textInjector, SLOT(listenMxMARowsRdy(int)));
