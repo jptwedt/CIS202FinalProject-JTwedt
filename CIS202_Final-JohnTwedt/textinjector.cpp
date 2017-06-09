@@ -24,18 +24,27 @@ void TextInjector::getMemberNames(QList<QString> *memberNames)
     for(int i = 0; i < memberNames->count(); ++i){
         (*content)[(*memberNames)[i]] = "";
     }
-    /*
-    place = content->begin();
-    while(place != content->end()){
-       qDebug() <<  place.key() << " : " << place.value() << " from textoutput.";
-       place++;
-    }
-    */
+}
+
+void TextInjector::formatPage()
+{
+   sentPage << sectionA.join("");
+   if(!sectionB.isEmpty()){
+      sentPage << "<hr />" << sectionB.join("");
+      if(!sectionR.isEmpty()){
+         sentPage << "<hr />" << sectionR.join("");
+      }
+   }
+
+   emit clearHTML();
+   emit sendHTML(sentPage.join(""));
+   sentPage.clear();
 }
 
 void TextInjector::formatMatrix(char matrixChar, const QStringList &incMatrix)
 {
    if(matrixChar == 'a'){
+      m_mxmMatrixA.clear();
       m_mxmMatrixA << "<p>Matrix A:";
       m_mxmMatrixA << "<table>";
       QStringListIterator sIter(incMatrix);
@@ -53,12 +62,13 @@ void TextInjector::formatMatrix(char matrixChar, const QStringList &incMatrix)
       }
       m_mxmMatrixA << "</table>";
       m_mxmMatrixA << "</p>";
-      QString temp = m_mxmMatrixA.join("");
-      emit clearHTML();
-      emit sendHTML(temp);
-      m_mxmMatrixA.clear();
+      formatSectionA();
+      //emit clearHTML();
+      //emit sendHTML(temp);
+      formatPage();
    }
    else if(matrixChar == 'b'){
+      m_mxmMatrixB.clear();
       m_mxmMatrixB << "<p>Matrix B:";
       m_mxmMatrixB << "<table>";
       QStringListIterator sIter(incMatrix);
@@ -76,12 +86,13 @@ void TextInjector::formatMatrix(char matrixChar, const QStringList &incMatrix)
       }
       m_mxmMatrixB << "</table>";
       m_mxmMatrixB << "</p>";
-      QString temp = m_mxmMatrixB.join("");
-      emit clearHTML();
-      emit sendHTML(temp);
-      m_mxmMatrixB.clear();
+      formatSectionB();
+      formatPage();
+      //emit clearHTML();
+      //emit sendHTML(temp);
    }
    else if(matrixChar == 's'){
+      m_sxmMatrix.clear();
       m_sxmMatrix << "<p>Matrix:";
       m_sxmMatrix << "<table style=\"align:left;\">";
       QStringListIterator sIter(incMatrix);
@@ -99,12 +110,13 @@ void TextInjector::formatMatrix(char matrixChar, const QStringList &incMatrix)
       }
       m_sxmMatrix << "</table>";
       m_sxmMatrix << "</p>";
-      QString temp = m_sxmMatrix.join("");
-      emit clearHTML();
-      emit sendHTML(temp);
-      m_sxmMatrix.clear();
+      formatSectionB();
+      formatPage();
+      //emit clearHTML();
+      //emit sendHTML(temp);
    }
    else{
+      m_rMatrix.clear();
       m_rMatrix << "<hr />";
       m_rMatrix << "<p>Result Matrix:";
       m_rMatrix << "<table style=\"align:left;\">";
@@ -123,32 +135,95 @@ void TextInjector::formatMatrix(char matrixChar, const QStringList &incMatrix)
       }
       m_rMatrix << "</table>";
       m_rMatrix << "</p>";
-      QString temp = m_rMatrix.join("");
-      emit clearHTML();
-      emit sendHTML(temp);
-      m_rMatrix.clear();
+      formatSectionR();
+      formatPage();
    }
+}
+
+void TextInjector::formatMatrix(char matrixChar, const QString &msg)
+{
+   if(matrixChar = 'A'){
+       m_mxmMatrixA.clear();
+       m_mxmMatrixA << "<p>Matrix A: " << msg << "</p>";
+       formatSectionA();
+       formatPage();
+   }
+   else if(matrixChar = 'B'){
+       m_mxmMatrixB.clear();
+       m_mxmMatrixB << "<p>Matrix B: " << msg << "</p>";
+       formatSectionB();
+       formatPage();
+   }
+   else if(matrixChar = 'S'){
+       m_sxmMatrix.clear();
+       m_sxmMatrix << "<p>Matrix: " << msg << "</p>";
+       formatSectionB();
+       formatPage();
+   }
+   else if(matrixChar = 'R'){
+       m_rMatrix.clear();
+       m_rMatrix << "<p>Result Matrix: " << msg << "</p>";
+       formatSectionR();
+       formatPage();
+   }
+}
+
+void TextInjector::formatSectionA()
+{
+   sectionA.clear();
+   if(m_sxm){
+      sectionA << (*content)["lineEditSxMScalar"];
+   }
+   else{
+      sectionA << m_mxmMatrixA;
+   }
+}
+
+void TextInjector::formatSectionB()
+{
+   sectionB.clear();
+   if(m_sxm){
+      sectionB << (*content)["lineEditSxMRows"]
+              << (*content)["lineEditSxMCols"]
+              << m_sxmMatrix;
+   }
+   else{
+      sectionB << m_mxmMatrixB;
+   }
+}
+
+void TextInjector::formatSectionR()
+{
+   sectionR.clear();
+   sectionR << m_rMatrix;
 }
 ////////////////////////////////////////SLOTS///////////////////////////////
 void TextInjector::listenSxMToggled(bool toggle)
 {
     m_sxm = toggle;
+    sectionA.clear();
+    sectionB.clear();
+    sectionR.clear();
 }
 
 void TextInjector::listenMxMToggled(bool toggle)
 {
    m_mxm = toggle;
+    sectionA.clear();
+    sectionB.clear();
+    sectionR.clear();
 }
 
 void TextInjector::listenSxMScalarRdy(qreal scalar)
 {
-   m_scalar = scalar;
-   QString name = "lineEditMxMScalar";
+   QString name = "lineEditSxMScalar";
    QString temp = "<p>Scalar: " + QString::number(scalar) + "</p>";
-   qDebug() << temp;
+   //qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionA();
+   formatPage();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenSxMScalarError(const QString &msg)
@@ -157,8 +232,10 @@ void TextInjector::listenSxMScalarError(const QString &msg)
    QString temp = "<p>Scalar: " + msg + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionA();
+   formatPage();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenSxMRowsRdy(int rows)
@@ -168,8 +245,10 @@ void TextInjector::listenSxMRowsRdy(int rows)
    QString temp = "<p>Matrix Rows: " + QString::number(rows) + "</p>";
    qDebug() << temp << " is in textinjector.";
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   formatPage();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenSxMRowsError(const QString &msg)
@@ -178,8 +257,10 @@ void TextInjector::listenSxMRowsError(const QString &msg)
    QString temp = "<p>Matrix Rows: " + msg + "</p>";
    qDebug() << temp << " is in textinjector.";
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   formatPage();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenSxMColsRdy(int cols)
@@ -189,8 +270,10 @@ void TextInjector::listenSxMColsRdy(int cols)
    QString temp = "<p>Matrix Columns: " + QString::number(cols) + "</p>";
    qDebug() << temp << " is in textinjector.";
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   formatPage();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenSxMColsError(const QString &msg)
@@ -199,18 +282,23 @@ void TextInjector::listenSxMColsError(const QString &msg)
    QString temp = "<p>Matrix Columns: " + msg + "</p>";
    qDebug() << temp << " is in textinjector.";
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   formatPage();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenSxMValsRdy(const QStringList &msg)
 {
    formatMatrix('s',msg);
+   formatPage();
 }
 
 void TextInjector::listenSxMValsError(const QString &msg)
 {
-   qDebug() << msg << " in textinjector.";
+   (*content)["lineEditSxMValues"] = msg;
+   formatSectionA();
+   formatPage();
 }
 
 void TextInjector::listenMxMARowsRdy(int rows)
@@ -220,8 +308,9 @@ void TextInjector::listenMxMARowsRdy(int rows)
    QString temp = "<p>Matrix A Rows: " + QString::number(rows) + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionA();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenMxMARowsError(const QString &msg)
@@ -230,8 +319,9 @@ void TextInjector::listenMxMARowsError(const QString &msg)
    QString temp = "<p>Matrix A Rows: " + msg + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 
 }
 
@@ -242,8 +332,10 @@ void TextInjector::listenMxMAColsRdy(int cols)
    QString temp = "<p>Matrix A Columns: " + QString::number(cols) + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 
 }
 
@@ -253,8 +345,9 @@ void TextInjector::listenMxMAColsError(const QString &msg)
    QString temp = "<p>Matrix A Columns: " + msg + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenMxMAValsRdy(const QStringList &msg)
@@ -274,8 +367,9 @@ void TextInjector::listenMxMBRowsRdy(int rows)
    QString temp = "<p>Matrix B Rows: " + QString::number(rows) + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenMxMBRowsError(const QString &msg)
@@ -284,8 +378,9 @@ void TextInjector::listenMxMBRowsError(const QString &msg)
    QString temp = "<p>Matrix B Rows: " + msg + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenMxMBColsRdy(int cols)
@@ -295,8 +390,9 @@ void TextInjector::listenMxMBColsRdy(int cols)
    QString temp = "<p>Matrix B Columns: " + QString::number(cols) + "</p>";
    qDebug() << temp;
    (*content)[name] = temp;
-   emit clearHTML();
-   emit sendHTML((*content)[name]);
+   formatSectionB();
+   //emit clearHTML();
+   //emit sendHTML((*content)[name]);
 }
 
 void TextInjector::listenMxMBColsError(const QString &msg)
@@ -316,30 +412,14 @@ void TextInjector::listenMxMBValsRdy(const QStringList &msg)
 
 void TextInjector::listenMxMBValsError(const QString &msg)
 {
-   QString temp = "Matrix B Values: " + msg;
-   emit clearHTML();
-   emit sendHTML(temp);
+   formatMatrix('B',msg);
+   //emit clearHTML();
+   //emit sendHTML(temp);
 }
 
 void TextInjector::listenSxMMatrixRdy(const QString &sxmMatrix)
 {
 
-}
-
-void TextInjector::listenSxMMatrixRdy(qreal **autofilled)
-{
-   if(m_autoFill.count() > 0){
-       m_autoFill.clear();
-   }
-   for(int i = 0; i < m_sxmRows; ++i){
-       for(int j = 0; j < m_sxmCols; ++j){
-           m_autoFill << QString::number(autofilled[i][j]);
-       }
-   }
-   formatMatrix('s',m_autoFill);
-   QString temp = m_autoFill.join(" ");
-   qDebug() << temp << " inside textinjector autofilled";
-   emit autofilledTxt(temp);
 }
 
 void TextInjector::listenMxMAMatrixRdy(const QString &mxmAMatrix)

@@ -20,12 +20,17 @@ class TextInjector : public QTextEdit {
 private:
    QMap<QString, QString> *content;
    QMap<QString, QString>::iterator place;
-   QStringList m_sxmMatrix,m_mxmMatrixA,m_mxmMatrixB,m_autoFill,m_rMatrix;
-   QString m_scalar;
-   void formatMatrix(char matrixChar, const QStringList &incMatrix);
+   QStringList m_sxmMatrix,m_mxmMatrixA,m_mxmMatrixB,m_rMatrix,
+      sectionA,sectionB,sectionR,sentPage;
    int m_sxmRows,m_sxmCols,m_mxmARows,m_mxmACols,m_mxmBRows,m_mxmBCols,
       m_rRows, m_rCols;
    bool m_sxm,m_mxm;
+   void formatMatrix(char matrixChar, const QStringList &incMatrix);
+   void formatMatrix(char matrixChar, const QString &msg);
+   void formatSectionA();
+   void formatSectionB();
+   void formatSectionR();
+   void formatPage();
 public:
    explicit TextInjector(QTextEdit *parent = 0);
    ~TextInjector();
@@ -56,13 +61,11 @@ public slots:
    void listenMxMBValsRdy(const QStringList &msg);   //comes from validator
    void listenMxMBValsError(const QString &msg);   //comes from validator
    void listenSxMMatrixRdy(const QString &sxmMatrix); //comes from validator
-   void listenSxMMatrixRdy(qreal **autofilled); //comes from validator
    void listenMxMAMatrixRdy(const QString &mxmAMatrix); //comes from validator
    void listenMxMBMatrixRdy(const QString &mxmBmatrix); //comes from validator
    void listenMatrixResult(int rows, int cols, const QStringList &rMatrix); //comes from matrix
 
 signals:
-   void autofilledTxt(const QString);
    void sendHTML(const QString &text);
    void clearHTML();
 
