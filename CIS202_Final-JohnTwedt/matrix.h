@@ -22,7 +22,7 @@ private:
    int m_rowsa,m_colsa,m_rowsb,m_colsb, m_rowsr,m_colsr;
    qreal m_scalar;
    QStringList matrixAVals, matrixBVals, matrixRVals;
-   bool add,subtract,multiply,mxm,sxm;
+   bool add,subtract,multiply,mxm,sxm,matrixAFilled,matrixBFilled;
    QTime t;
 
 public:
@@ -64,7 +64,7 @@ public slots:
 
 signals:
    void matrixToOutput(int,int,QStringList);
-   void autoFilledMatrixA(QStringList);
-   void autoFilledMatrixB(QStringList);
+   void autoFilledMatrixA(QString);
+   void autoFilledMatrixB(qreal**);
 };
 #endif // MATRIX_H

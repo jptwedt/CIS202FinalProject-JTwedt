@@ -6,6 +6,8 @@ Matrix::Matrix(QObject *parent){
     add = true;
     subtract = false;
     multiply = false;
+    matrixAFilled = false;
+    matrixBFilled = false;
     m_rowsa = 0;
     m_colsa = 0;
     m_rowsb = 0;
@@ -38,6 +40,7 @@ void Matrix::emptyMatrixA() {
     }
     m_rowsa = 0;
     m_colsa = 0;
+    matrixAFilled = false;
 }
 
 void Matrix::emptyMatrixB() {
@@ -46,6 +49,7 @@ void Matrix::emptyMatrixB() {
     }
     m_rowsb = 0;
     m_colsb = 0;
+    matrixBFilled = false;
 }
 
 void Matrix::clearMatrixA()
@@ -190,6 +194,7 @@ void Matrix::goodMatrixA(QStringList ma)
            }
         }
     }
+    matrixAFilled = true;
 }
 
 void Matrix::goodMatrixB(QStringList mb)
@@ -202,24 +207,37 @@ void Matrix::goodMatrixB(QStringList mb)
             qDebug() << m_matrixB[i][j];
         }
     }
+    matrixBFilled = true;
 }
 
 void Matrix::autofillA()
 {
+   QString temp;
+   m_matrixA = new qreal*[m_colsa];
    for(int i = 0; i < m_colsa; ++i){
+      m_matrixA[i] = new qreal[m_rowsa];
       for(int j = 0; j < m_rowsa; ++j){
-          m_matrixA[i][j] = (double)(qrand() % 200 - 100);
+        m_matrixA[i][j] = (double)(qrand() % 200 - 100);
+        temp = temp + " " + QString::number(m_matrixA[i][j]);
       }
    }
+   matrixAFilled = true;
+   emit autoFilledMatrixA(temp);
 }
 
 void Matrix::autofillB()
 {
+   if(matrixBFilled){
+       emptyMatrixB();
+   }
    for(int i = 0; i < m_colsa; ++i){
       for(int j = 0; j < m_rowsa; ++j){
-          m_matrixA[i][j] = (double)(qrand() % 200 - 100);
+          m_matrixB[i][j] = (double)(qrand() % 200 - 100);
+          qDebug() << m_matrixB[i][j];
       }
    }
+   matrixBFilled = true;
+   emit autoFilledMatrixB(m_matrixB);
 }
 
 void Matrix::sxmSubmitted()

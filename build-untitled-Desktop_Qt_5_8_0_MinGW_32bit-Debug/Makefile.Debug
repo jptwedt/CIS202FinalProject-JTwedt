@@ -253,8 +253,9 @@ debug/moc_mainwindow.cpp: C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QMainWi
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
 		../CIS202_Final-JohnTwedt/textinjector.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QMap \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QStringList \
 		../CIS202_Final-JohnTwedt/matrix.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtGlobal \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
@@ -586,7 +587,7 @@ debug/moc_textinjector.cpp: ../CIS202_Final-JohnTwedt/header.hpp \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcontiguouscache.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QStringList \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextEdit \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
@@ -637,6 +638,7 @@ debug/moc_textinjector.cpp: ../CIS202_Final-JohnTwedt/header.hpp \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
 		../CIS202_Final-JohnTwedt/matrix.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtDebug \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtGlobal \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
@@ -795,8 +797,9 @@ debug/main.o: ../CIS202_Final-JohnTwedt/main.cpp ../CIS202_Final-JohnTwedt/mainw
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
 		../CIS202_Final-JohnTwedt/textinjector.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QMap \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QStringList \
 		../CIS202_Final-JohnTwedt/matrix.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtGlobal \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
@@ -946,8 +949,9 @@ debug/mainwindow.o: ../CIS202_Final-JohnTwedt/mainwindow.cpp ../CIS202_Final-Joh
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsignalmapper.h \
 		../CIS202_Final-JohnTwedt/textinjector.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QMap \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QStringList \
 		../CIS202_Final-JohnTwedt/matrix.h \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtGlobal \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \
@@ -1289,7 +1293,7 @@ debug/textinjector.o: ../CIS202_Final-JohnTwedt/textinjector.cpp ../CIS202_Final
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qcontiguouscache.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qsharedpointer_impl.h \
-		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QStringList \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/QTextEdit \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtextedit.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtWidgets/qtwidgetsglobal.h \
@@ -1340,6 +1344,7 @@ debug/textinjector.o: ../CIS202_Final-JohnTwedt/textinjector.cpp ../CIS202_Final
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtGui/qpen.h \
 		../CIS202_Final-JohnTwedt/matrix.h \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtDebug \
+		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QString \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QtGlobal \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/QTime \
 		C:/Qt/Qt5.8.0/5.8/mingw53_32/include/QtCore/qdatetime.h \

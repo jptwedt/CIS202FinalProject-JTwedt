@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Matrix_t {
-    QByteArrayData data[27];
-    char stringdata0[275];
+    QByteArrayData data[28];
+    char stringdata0[283];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,38 +36,39 @@ QT_MOC_LITERAL(1, 7, 14), // "matrixToOutput"
 QT_MOC_LITERAL(2, 22, 0), // ""
 QT_MOC_LITERAL(3, 23, 17), // "autoFilledMatrixA"
 QT_MOC_LITERAL(4, 41, 17), // "autoFilledMatrixB"
-QT_MOC_LITERAL(5, 59, 10), // "sxmToggled"
-QT_MOC_LITERAL(6, 70, 6), // "toggle"
-QT_MOC_LITERAL(7, 77, 10), // "mxmToggled"
-QT_MOC_LITERAL(8, 88, 10), // "addToggled"
-QT_MOC_LITERAL(9, 99, 15), // "subtractToggled"
-QT_MOC_LITERAL(10, 115, 15), // "multiplyToggled"
-QT_MOC_LITERAL(11, 131, 10), // "goodScalar"
-QT_MOC_LITERAL(12, 142, 6), // "scalar"
-QT_MOC_LITERAL(13, 149, 9), // "goodRowsA"
-QT_MOC_LITERAL(14, 159, 4), // "rows"
-QT_MOC_LITERAL(15, 164, 9), // "goodColsA"
-QT_MOC_LITERAL(16, 174, 4), // "cols"
-QT_MOC_LITERAL(17, 179, 9), // "goodRowsB"
-QT_MOC_LITERAL(18, 189, 9), // "goodColsB"
-QT_MOC_LITERAL(19, 199, 11), // "goodMatrixA"
-QT_MOC_LITERAL(20, 211, 2), // "ma"
-QT_MOC_LITERAL(21, 214, 11), // "goodMatrixB"
-QT_MOC_LITERAL(22, 226, 2), // "mb"
-QT_MOC_LITERAL(23, 229, 9), // "autofillA"
-QT_MOC_LITERAL(24, 239, 9), // "autofillB"
-QT_MOC_LITERAL(25, 249, 12), // "sxmSubmitted"
-QT_MOC_LITERAL(26, 262, 12) // "mxmSubmitted"
+QT_MOC_LITERAL(5, 59, 7), // "qreal**"
+QT_MOC_LITERAL(6, 67, 10), // "sxmToggled"
+QT_MOC_LITERAL(7, 78, 6), // "toggle"
+QT_MOC_LITERAL(8, 85, 10), // "mxmToggled"
+QT_MOC_LITERAL(9, 96, 10), // "addToggled"
+QT_MOC_LITERAL(10, 107, 15), // "subtractToggled"
+QT_MOC_LITERAL(11, 123, 15), // "multiplyToggled"
+QT_MOC_LITERAL(12, 139, 10), // "goodScalar"
+QT_MOC_LITERAL(13, 150, 6), // "scalar"
+QT_MOC_LITERAL(14, 157, 9), // "goodRowsA"
+QT_MOC_LITERAL(15, 167, 4), // "rows"
+QT_MOC_LITERAL(16, 172, 9), // "goodColsA"
+QT_MOC_LITERAL(17, 182, 4), // "cols"
+QT_MOC_LITERAL(18, 187, 9), // "goodRowsB"
+QT_MOC_LITERAL(19, 197, 9), // "goodColsB"
+QT_MOC_LITERAL(20, 207, 11), // "goodMatrixA"
+QT_MOC_LITERAL(21, 219, 2), // "ma"
+QT_MOC_LITERAL(22, 222, 11), // "goodMatrixB"
+QT_MOC_LITERAL(23, 234, 2), // "mb"
+QT_MOC_LITERAL(24, 237, 9), // "autofillA"
+QT_MOC_LITERAL(25, 247, 9), // "autofillB"
+QT_MOC_LITERAL(26, 257, 12), // "sxmSubmitted"
+QT_MOC_LITERAL(27, 270, 12) // "mxmSubmitted"
 
     },
     "Matrix\0matrixToOutput\0\0autoFilledMatrixA\0"
-    "autoFilledMatrixB\0sxmToggled\0toggle\0"
-    "mxmToggled\0addToggled\0subtractToggled\0"
-    "multiplyToggled\0goodScalar\0scalar\0"
-    "goodRowsA\0rows\0goodColsA\0cols\0goodRowsB\0"
-    "goodColsB\0goodMatrixA\0ma\0goodMatrixB\0"
-    "mb\0autofillA\0autofillB\0sxmSubmitted\0"
-    "mxmSubmitted"
+    "autoFilledMatrixB\0qreal**\0sxmToggled\0"
+    "toggle\0mxmToggled\0addToggled\0"
+    "subtractToggled\0multiplyToggled\0"
+    "goodScalar\0scalar\0goodRowsA\0rows\0"
+    "goodColsA\0cols\0goodRowsB\0goodColsB\0"
+    "goodMatrixA\0ma\0goodMatrixB\0mb\0autofillA\0"
+    "autofillB\0sxmSubmitted\0mxmSubmitted"
 };
 #undef QT_MOC_LITERAL
 
@@ -90,41 +91,41 @@ static const uint qt_meta_data_Matrix[] = {
        4,    1,  119,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    1,  122,    2, 0x0a /* Public */,
-       7,    1,  125,    2, 0x0a /* Public */,
-       8,    1,  128,    2, 0x0a /* Public */,
-       9,    1,  131,    2, 0x0a /* Public */,
-      10,    1,  134,    2, 0x0a /* Public */,
-      11,    1,  137,    2, 0x0a /* Public */,
-      13,    1,  140,    2, 0x0a /* Public */,
-      15,    1,  143,    2, 0x0a /* Public */,
-      17,    1,  146,    2, 0x0a /* Public */,
-      18,    1,  149,    2, 0x0a /* Public */,
-      19,    1,  152,    2, 0x0a /* Public */,
-      21,    1,  155,    2, 0x0a /* Public */,
-      23,    0,  158,    2, 0x0a /* Public */,
-      24,    0,  159,    2, 0x0a /* Public */,
-      25,    0,  160,    2, 0x0a /* Public */,
-      26,    0,  161,    2, 0x0a /* Public */,
+       6,    1,  122,    2, 0x0a /* Public */,
+       8,    1,  125,    2, 0x0a /* Public */,
+       9,    1,  128,    2, 0x0a /* Public */,
+      10,    1,  131,    2, 0x0a /* Public */,
+      11,    1,  134,    2, 0x0a /* Public */,
+      12,    1,  137,    2, 0x0a /* Public */,
+      14,    1,  140,    2, 0x0a /* Public */,
+      16,    1,  143,    2, 0x0a /* Public */,
+      18,    1,  146,    2, 0x0a /* Public */,
+      19,    1,  149,    2, 0x0a /* Public */,
+      20,    1,  152,    2, 0x0a /* Public */,
+      22,    1,  155,    2, 0x0a /* Public */,
+      24,    0,  158,    2, 0x0a /* Public */,
+      25,    0,  159,    2, 0x0a /* Public */,
+      26,    0,  160,    2, 0x0a /* Public */,
+      27,    0,  161,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::Int, QMetaType::Int, QMetaType::QStringList,    2,    2,    2,
-    QMetaType::Void, QMetaType::QStringList,    2,
-    QMetaType::Void, QMetaType::QStringList,    2,
+    QMetaType::Void, QMetaType::QString,    2,
+    QMetaType::Void, 0x80000000 | 5,    2,
 
  // slots: parameters
-    QMetaType::Void, QMetaType::Bool,    6,
-    QMetaType::Void, QMetaType::Bool,    6,
-    QMetaType::Void, QMetaType::Bool,    6,
-    QMetaType::Void, QMetaType::Bool,    6,
-    QMetaType::Void, QMetaType::Bool,    6,
-    QMetaType::Void, QMetaType::QReal,   12,
-    QMetaType::Void, QMetaType::Int,   14,
-    QMetaType::Void, QMetaType::Int,   16,
-    QMetaType::Void, QMetaType::Int,   14,
-    QMetaType::Void, QMetaType::Int,   16,
-    QMetaType::Void, QMetaType::QStringList,   20,
-    QMetaType::Void, QMetaType::QStringList,   22,
+    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void, QMetaType::Bool,    7,
+    QMetaType::Void, QMetaType::QReal,   13,
+    QMetaType::Void, QMetaType::Int,   15,
+    QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void, QMetaType::Int,   15,
+    QMetaType::Void, QMetaType::Int,   17,
+    QMetaType::Void, QMetaType::QStringList,   21,
+    QMetaType::Void, QMetaType::QStringList,   23,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -140,8 +141,8 @@ void Matrix::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->matrixToOutput((*reinterpret_cast< int(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2])),(*reinterpret_cast< QStringList(*)>(_a[3]))); break;
-        case 1: _t->autoFilledMatrixA((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
-        case 2: _t->autoFilledMatrixB((*reinterpret_cast< QStringList(*)>(_a[1]))); break;
+        case 1: _t->autoFilledMatrixA((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 2: _t->autoFilledMatrixB((*reinterpret_cast< qreal**(*)>(_a[1]))); break;
         case 3: _t->sxmToggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 4: _t->mxmToggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
         case 5: _t->addToggled((*reinterpret_cast< bool(*)>(_a[1]))); break;
@@ -171,14 +172,14 @@ void Matrix::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void
             }
         }
         {
-            typedef void (Matrix::*_t)(QStringList );
+            typedef void (Matrix::*_t)(QString );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Matrix::autoFilledMatrixA)) {
                 *result = 1;
                 return;
             }
         }
         {
-            typedef void (Matrix::*_t)(QStringList );
+            typedef void (Matrix::*_t)(qreal * * );
             if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&Matrix::autoFilledMatrixB)) {
                 *result = 2;
                 return;
@@ -231,14 +232,14 @@ void Matrix::matrixToOutput(int _t1, int _t2, QStringList _t3)
 }
 
 // SIGNAL 1
-void Matrix::autoFilledMatrixA(QStringList _t1)
+void Matrix::autoFilledMatrixA(QString _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 1, _a);
 }
 
 // SIGNAL 2
-void Matrix::autoFilledMatrixB(QStringList _t1)
+void Matrix::autoFilledMatrixB(qreal * * _t1)
 {
     void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 2, _a);

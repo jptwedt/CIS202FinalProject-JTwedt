@@ -34,7 +34,7 @@ class MainWindow : public QMainWindow
     Validator *validator;
     FlowController *tControl;
     TextInjector *textInjector;
-    Matrix *m_sxmMatrix,*m_mxmMatrixA,*m_mxmMatrixB;
+    Matrix *matrixLayer;
     QList<QString> *memberNames;        //stores the names of ui member items
     QList<QString> *fieldNames;        //stores the names of ui input field names
 

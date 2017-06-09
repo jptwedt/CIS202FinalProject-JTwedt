@@ -326,6 +326,22 @@ void TextInjector::listenSxMMatrixRdy(const QString &sxmMatrix)
 
 }
 
+void TextInjector::listenSxMMatrixRdy(qreal **autofilled)
+{
+   if(m_autoFill.count() > 0){
+       m_autoFill.clear();
+   }
+   for(int i = 0; i < m_sxmRows; ++i){
+       for(int j = 0; j < m_sxmCols; ++j){
+           m_autoFill << QString::number(autofilled[i][j]);
+       }
+   }
+   formatMatrix('s',m_autoFill);
+   QString temp = m_autoFill.join(" ");
+   qDebug() << temp << " inside textinjector autofilled";
+   emit autofilledTxt(temp);
+}
+
 void TextInjector::listenMxMAMatrixRdy(const QString &mxmAMatrix)
 {
 

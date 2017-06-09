@@ -65,9 +65,7 @@ MainWindow::MainWindow(QWidget *parent) :
    textInjector = new TextInjector;
    textInjector->getMemberNames(memberNames);
 
-   m_sxmMatrix = new Matrix;
-   m_mxmMatrixA = new Matrix;
-   m_mxmMatrixB = new Matrix;
+   matrixLayer = new Matrix;
 
    validator = new Validator();
    validator->getFieldNames(fieldNames);
@@ -94,34 +92,34 @@ MainWindow::MainWindow(QWidget *parent) :
    QObject::connect(m_lineEditMxMBCols, SIGNAL(textChanged(QString)),validator,SLOT(mxmBRowsEdited(QString)));
    QObject::connect(m_lineEditMxMBRows, SIGNAL(textChanged(QString)),validator,SLOT(mxmBColsEdited(QString)));
    QObject::connect(m_lineEditMxMBValues, SIGNAL(textChanged(QString)),validator,SLOT(mxmBValsEdited(QString)));
-   QObject::connect(validator, SIGNAL(sxmScalarGood(qreal)),m_sxmMatrix, SLOT(goodScalar(qreal)));
+   QObject::connect(validator, SIGNAL(sxmScalarGood(qreal)),matrixLayer, SLOT(goodScalar(qreal)));
    QObject::connect(validator, SIGNAL(sxmScalarGood(qreal)),textInjector, SLOT(listenSxMScalarRdy(qreal)));
    QObject::connect(validator, SIGNAL(sxmScalarGood(bool)),tControl, SLOT(sxmScalarGood(bool)));
    QObject::connect(validator, SIGNAL(sxmScalarNoGood(QString)),textInjector, SLOT(listenSxMScalarError(QString)));
-   QObject::connect(validator, SIGNAL(sxmRowsGood(int)),m_sxmMatrix, SLOT(goodRowsA(int)));
+   QObject::connect(validator, SIGNAL(sxmRowsGood(int)),matrixLayer, SLOT(goodRowsA(int)));
    QObject::connect(validator, SIGNAL(sxmRowsGood(int)),textInjector, SLOT(listenSxMRowsRdy(int)));
    QObject::connect(validator, SIGNAL(sxmRowsGood(bool)),tControl, SLOT(sxmRowsGood(bool)));
    QObject::connect(validator, SIGNAL(sxmRowsNoGood(QString)),textInjector, SLOT(listenSxMRowsError(QString)));
-   QObject::connect(validator, SIGNAL(sxmColsGood(int)),m_sxmMatrix, SLOT(goodColsA(int)));
+   QObject::connect(validator, SIGNAL(sxmColsGood(int)),matrixLayer, SLOT(goodColsA(int)));
    QObject::connect(validator, SIGNAL(sxmColsGood(int)),textInjector, SLOT(listenSxMColsRdy(int)));
    QObject::connect(validator, SIGNAL(sxmColsGood(bool)),tControl, SLOT(sxmColsGood(bool)));
    QObject::connect(validator, SIGNAL(sxmColsNoGood(QString)),textInjector, SLOT(listenSxMColsError(QString)));
    QObject::connect(validator, SIGNAL(sxmValsGood(QStringList)),textInjector, SLOT(listenSxMValsRdy(QStringList)));
-   QObject::connect(validator, SIGNAL(sxmValsGood(QStringList)),m_sxmMatrix, SLOT(goodMatrixA(QStringList)));
+   QObject::connect(validator, SIGNAL(sxmValsGood(QStringList)),matrixLayer, SLOT(goodMatrixA(QStringList)));
    QObject::connect(validator, SIGNAL(sxmValsGood(bool)),tControl, SLOT(sxmValsGood(bool)));
-   QObject::connect(validator, SIGNAL(mxmARowsGood(int)),m_mxmMatrixA, SLOT(goodRowsA(int)));
+   QObject::connect(validator, SIGNAL(mxmARowsGood(int)),matrixLayer, SLOT(goodRowsA(int)));
    QObject::connect(validator, SIGNAL(mxmARowsGood(int)),textInjector, SLOT(listenMxMARowsRdy(int)));
    QObject::connect(validator, SIGNAL(mxmARowsGood(bool)),tControl, SLOT(mxmARowsGood(bool)));
    QObject::connect(validator, SIGNAL(mxmARowsNoGood(QString)),textInjector, SLOT(listenMxMARowsError(QString)));
-   QObject::connect(validator, SIGNAL(mxmAColsGood(int)),m_mxmMatrixA, SLOT(goodColsA(int)));
+   QObject::connect(validator, SIGNAL(mxmAColsGood(int)),matrixLayer, SLOT(goodColsA(int)));
    QObject::connect(validator, SIGNAL(mxmAColsGood(int)),textInjector, SLOT(listenMxMAColsRdy(int)));
    QObject::connect(validator, SIGNAL(mxmAColsGood(bool)),tControl, SLOT(mxmAColsGood(bool)));
    QObject::connect(validator, SIGNAL(mxmAColsNoGood(QString)),textInjector, SLOT(listenMxMAColsError(QString)));
-   QObject::connect(validator, SIGNAL(mxmBRowsGood(int)),m_mxmMatrixB, SLOT(goodRowsB(int)));
+   QObject::connect(validator, SIGNAL(mxmBRowsGood(int)),matrixLayer, SLOT(goodRowsB(int)));
    QObject::connect(validator, SIGNAL(mxmBRowsGood(int)),textInjector, SLOT(listenMxMBRowsRdy(int)));
    QObject::connect(validator, SIGNAL(mxmBRowsGood(bool)),tControl, SLOT(mxmBRowsGood(bool)));
    QObject::connect(validator, SIGNAL(mxmBRowsNoGood(QString)),textInjector, SLOT(listenMxMBRowsError(QString)));
-   QObject::connect(validator, SIGNAL(mxmBColsGood(int)),m_mxmMatrixB, SLOT(goodColsB(int)));
+   QObject::connect(validator, SIGNAL(mxmBColsGood(int)),matrixLayer, SLOT(goodColsB(int)));
    QObject::connect(validator, SIGNAL(mxmBColsGood(int)),textInjector, SLOT(listenMxMBRowsRdy(int)));
    QObject::connect(validator, SIGNAL(mxmBColsGood(bool)),tControl, SLOT(mxmBColsGood(bool)));
    QObject::connect(validator, SIGNAL(mxmBColsNoGood(QString)),textInjector, SLOT(listenMxMBColsError(QString)));
@@ -133,6 +131,10 @@ MainWindow::MainWindow(QWidget *parent) :
    QObject::connect(tControl, SIGNAL(enableMxMBVals(bool)),m_pushButtonAutofillMxMB,SLOT(setEnabled(bool)));
    QObject::connect(tControl, SIGNAL(enableSxMSubmit(bool)),m_pushButtonSubmitSxM,SLOT(setEnabled(bool)));
    QObject::connect(tControl, SIGNAL(enableMxMSubmit(bool)),m_pushButtonSubmitMxM,SLOT(setEnabled(bool)));
+   QObject::connect(m_pushButtonAutofillSxM, SIGNAL(pressed()),matrixLayer, SLOT(autofillA()));
+   QObject::connect(m_pushButtonSubmitSxM, SIGNAL(pressed()),matrixLayer, SLOT(sxmSubmitted()));
+   QObject::connect(m_pushButtonSubmitMxM, SIGNAL(pressed()),matrixLayer, SLOT(mxmSubmitted()));
+   QObject::connect(matrixLayer, SIGNAL(autoFilledMatrixA(QString)),m_lineEditSxMValues, SLOT(setText(QString)));
    QObject::connect(textInjector, SIGNAL(clearHTML()),m_textOut, SLOT(clear()));
    QObject::connect(textInjector, SIGNAL(sendHTML(QString)),m_textOut, SLOT(insertHtml(QString)));
 }

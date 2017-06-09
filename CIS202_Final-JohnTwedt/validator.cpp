@@ -81,6 +81,7 @@ void Validator::setFieldPattern(const QString &fieldName, const QString &pattern
    else{
       place.value()->setPattern(pattern);
    }
+   /*
    place = patternMap->begin();
    if(place != patternMap->end()){
       do{
@@ -89,8 +90,9 @@ void Validator::setFieldPattern(const QString &fieldName, const QString &pattern
       }while(place != patternMap->end());
    }
    else{
-           qDebug() << "empty fieldname list";
-       }
+      qDebug() << "empty fieldname list";
+   }
+   */
 }
 
 void Validator::getFieldNames(const QList<QString> *fieldNames)
