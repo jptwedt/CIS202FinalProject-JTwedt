@@ -18,31 +18,25 @@ class Matrix : public QObject {
     Q_OBJECT
 
 private:
-   qreal **m_matrixA, **m_matrixB, **m_matrixR;
-   int m_rowsa,m_colsa,m_rowsb,m_colsb, m_rowsr,m_colsr;
-   qreal m_scalar;
-   QStringList matrixAVals, matrixBVals, matrixRVals;
-   bool add,subtract,multiply,mxm,sxm,matrixAFilled,matrixBFilled;
+   qreal **m_matrix, **m_matrixA, **m_matrixB, **m_matrixR, m_scalar;
+   int m_rows,m_cols,m_rowsa,m_colsa,m_rowsb,m_colsb, m_rowsr,m_colsr;
+   QStringList matrixVals,matrixAVals, matrixBVals, matrixRVals;
+   bool add,subtract,multiply,mxm,sxm,matrixFilled,matrixAFilled,matrixBFilled,
+      matrixRFilled;
    QTime t;
 
 public:
    explicit Matrix(QObject *parent = 0);                        //default constructor
    //explicit Matrix(QObject *parent = 0,int rows, int cols);      //constructor
    ~Matrix();                       //destructor
+   void emptyMatrix();
    void emptyMatrixA();
    void emptyMatrixB();
+   void emptyMatrixR();
+   void clearMatrix();
    void clearMatrixA();
    void clearMatrixB();
-   int rowsA() const;
-   int rowsB() const;
-   void setRowsA(int rows);
-   void setRowsB(int rows);
-   int colsA() const;
-   int colsB() const;
-   void setColsA(int cols);
-   void setColsB(int cols);
-   qreal **matrixA() const;
-   qreal **matrixB() const;
+   void clearMatrixR();
 
 public slots:
    void sxmToggled(bool toggle);
@@ -51,20 +45,26 @@ public slots:
    void subtractToggled(bool toggle);
    void multiplyToggled(bool toggle);
    void goodScalar(qreal scalar);
+   void goodRows(int rows);
+   void goodCols(int cols);
    void goodRowsA(int rows);
    void goodColsA(int cols);
    void goodRowsB(int rows);
    void goodColsB(int cols);
-   void goodMatrixA(QStringList ma);
-   void goodMatrixB(QStringList mb);
+   void goodMatrix(const QStringList &m);
+   void goodMatrixA(const QStringList &ma);
+   void goodMatrixB(const QStringList &mb);
+   void autofill();
    void autofillA();
    void autofillB();
    void sxmSubmitted();
    void mxmSubmitted();
 
 signals:
-   void matrixToOutput(int,int,QStringList);
-   void autoFilledMatrixA(QString);
-   void autoFilledMatrixB(qreal**);
+   void matrixToOutput(int,int, const QStringList&);
+   void autoFilledMatrix(const QString&);
+   void autoFilledMatrixA(const QString&);
+   void autoFilledMatrixB(const QString&);
+   void operationChanged();
 };
 #endif // MATRIX_H

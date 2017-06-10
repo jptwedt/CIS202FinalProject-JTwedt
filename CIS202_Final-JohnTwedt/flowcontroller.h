@@ -39,6 +39,8 @@ public slots:
    void mxmBValsGood(bool toggle);
 
 signals:
+   void _sxmSelected(bool);
+   void _mxmSelected(bool);
    void enableSxMVals(bool);
    void enableSxMSubmit(bool);
    void enableMxMAVals(bool);

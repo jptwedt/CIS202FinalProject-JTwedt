@@ -31,6 +31,7 @@ private:
    void formatSectionB();
    void formatSectionR();
    void formatPage();
+   void clearAll();
 public:
    explicit TextInjector(QTextEdit *parent = 0);
    ~TextInjector();
@@ -60,10 +61,8 @@ public slots:
    void listenMxMBColsError(const QString &msg);    //comes from validator
    void listenMxMBValsRdy(const QStringList &msg);   //comes from validator
    void listenMxMBValsError(const QString &msg);   //comes from validator
-   void listenSxMMatrixRdy(const QString &sxmMatrix); //comes from validator
-   void listenMxMAMatrixRdy(const QString &mxmAMatrix); //comes from validator
-   void listenMxMBMatrixRdy(const QString &mxmBmatrix); //comes from validator
    void listenMatrixResult(int rows, int cols, const QStringList &rMatrix); //comes from matrix
+   void listenOpChange();
 
 signals:
    void sendHTML(const QString &text);

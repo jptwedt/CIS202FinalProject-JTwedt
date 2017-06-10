@@ -36,14 +36,16 @@ FlowController::~FlowController()
 
 void FlowController::sxmSelected(bool toggle)
 {
+   qDebug() << sxm << " sxm val : " << toggle << " toggle val.";
    sxm = toggle;
-   qDebug() << sxm << " sxm val : " << mxm << " mxm val.";
+   emit _sxmSelected(sxm);
 }
 
 void FlowController::mxmSelected(bool toggle)
 {
+   qDebug() << mxm << " mxm val : " << toggle << " toggle val.";
    mxm = toggle;
-   qDebug() << mxm << " mxm val : " << sxm << " sxm val.";
+   emit _mxmSelected(mxm);
 }
 
 void FlowController::addButtonToggled(bool status)
@@ -56,8 +58,8 @@ void FlowController::subtractButtonToggled(bool status)
 {
    radioButtonSubtract = status;
    qDebug() << radioButtonSubtract << " is current value of radioButtonSubtract in tControl.";
-   if(radioButtonAdd = true){
-      radioButtonAdd = false;
+   if(radioButtonAdd == true){
+      radioButtonAdd == false;
    }
 }
 
@@ -65,8 +67,8 @@ void FlowController::multiplyButtonToggled(bool status)
 {
    radioButtonMultiply = status;
    qDebug() << radioButtonMultiply << " is current value of radioButtonMultiply in tControl.";
-   if(radioButtonAdd = true){
-       radioButtonAdd = false;
+   if(radioButtonAdd == true){
+       radioButtonAdd == false;
    }
 }
 
@@ -111,7 +113,7 @@ void FlowController::sxmValsGood(bool toggle)
 {
    qDebug() << "got the " << toggle << " message.";
    sxmVals = toggle;
-   if(sxmVals){
+   if(sxmVals && sxmCols && sxmRows && sxmScalar){
        sxmSubmitOn = true;
    }
    else{
@@ -135,7 +137,7 @@ void FlowController::mxmARowsGood(bool toggle)
 void FlowController::mxmAColsGood(bool toggle)
 {
     mxmACols = toggle;
-    if(mxmARows && mxmACols){
+    if(mxmACols && mxmARows){
        mxmAValsOn = true;
     }
     else{
@@ -147,7 +149,7 @@ void FlowController::mxmAColsGood(bool toggle)
 void FlowController::mxmAValsGood(bool toggle)
 {
    mxmAVals = toggle;
-   if(mxmAVals && mxmBVals){
+   if(mxmAVals && mxmARows && mxmACols && mxmBVals && mxmBRows && mxmBCols){
        mxmSubmitOn = true;
    }
    else{
@@ -183,7 +185,7 @@ void FlowController::mxmBColsGood(bool toggle)
 void FlowController::mxmBValsGood(bool toggle)
 {
    mxmBVals = toggle;
-   if(mxmAVals && mxmBVals){
+   if(mxmBVals && mxmBRows && mxmBCols && mxmAVals && mxmARows && mxmACols){
        mxmSubmitOn = true;
    }
    else{

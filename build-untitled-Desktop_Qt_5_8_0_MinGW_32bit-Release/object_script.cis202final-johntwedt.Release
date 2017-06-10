@@ -1,0 +1,13 @@
+INPUT(
+./release\main.o
+./release\mainwindow.o
+./release\matrix.o
+./release\flowcontroller.o
+./release\validator.o
+./release\textinjector.o
+./release\moc_mainwindow.o
+./release\moc_matrix.o
+./release\moc_flowcontroller.o
+./release\moc_validator.o
+./release\moc_textinjector.o
+);

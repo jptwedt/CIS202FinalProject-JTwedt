@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_Validator_t {
-    QByteArrayData data[41];
-    char stringdata0[530];
+    QByteArrayData data[39];
+    char stringdata0[504];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -69,9 +69,7 @@ QT_MOC_LITERAL(34, 429, 14), // "mxmAColsEdited"
 QT_MOC_LITERAL(35, 444, 14), // "mxmAValsEdited"
 QT_MOC_LITERAL(36, 459, 14), // "mxmBRowsEdited"
 QT_MOC_LITERAL(37, 474, 14), // "mxmBColsEdited"
-QT_MOC_LITERAL(38, 489, 14), // "mxmBValsEdited"
-QT_MOC_LITERAL(39, 504, 12), // "mxmSubmitted"
-QT_MOC_LITERAL(40, 517, 12) // "sxmSubmitted"
+QT_MOC_LITERAL(38, 489, 14) // "mxmBValsEdited"
 
     },
     "Validator\0sxmScalarGood\0\0sxmScalarNoGood\0"
@@ -87,7 +85,7 @@ QT_MOC_LITERAL(40, 517, 12) // "sxmSubmitted"
     "sxmColsEdited\0sxmValsEdited\0mxmARowsEdited\0"
     "mxmAColsEdited\0mxmAValsEdited\0"
     "mxmBRowsEdited\0mxmBColsEdited\0"
-    "mxmBValsEdited\0mxmSubmitted\0sxmSubmitted"
+    "mxmBValsEdited"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,7 +95,7 @@ static const uint qt_meta_data_Validator[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      46,   14, // methods
+      44,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -105,54 +103,52 @@ static const uint qt_meta_data_Validator[] = {
       31,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  244,    2, 0x06 /* Public */,
-       1,    1,  247,    2, 0x06 /* Public */,
-       3,    1,  250,    2, 0x06 /* Public */,
-       4,    1,  253,    2, 0x06 /* Public */,
-       4,    1,  256,    2, 0x06 /* Public */,
-       5,    1,  259,    2, 0x06 /* Public */,
-       6,    1,  262,    2, 0x06 /* Public */,
-       6,    1,  265,    2, 0x06 /* Public */,
-       7,    1,  268,    2, 0x06 /* Public */,
-       8,    1,  271,    2, 0x06 /* Public */,
-       8,    1,  274,    2, 0x06 /* Public */,
-       9,    1,  277,    2, 0x06 /* Public */,
-      10,    1,  280,    2, 0x06 /* Public */,
-      10,    1,  283,    2, 0x06 /* Public */,
-      11,    1,  286,    2, 0x06 /* Public */,
-      12,    1,  289,    2, 0x06 /* Public */,
-      12,    1,  292,    2, 0x06 /* Public */,
-      13,    1,  295,    2, 0x06 /* Public */,
-      14,    1,  298,    2, 0x06 /* Public */,
-      14,    1,  301,    2, 0x06 /* Public */,
-      15,    1,  304,    2, 0x06 /* Public */,
-      16,    1,  307,    2, 0x06 /* Public */,
-      16,    1,  310,    2, 0x06 /* Public */,
-      17,    1,  313,    2, 0x06 /* Public */,
-      18,    1,  316,    2, 0x06 /* Public */,
-      18,    1,  319,    2, 0x06 /* Public */,
-      19,    1,  322,    2, 0x06 /* Public */,
-      20,    1,  325,    2, 0x06 /* Public */,
-      20,    1,  328,    2, 0x06 /* Public */,
-      21,    1,  331,    2, 0x06 /* Public */,
-      22,    1,  334,    2, 0x06 /* Public */,
+       1,    1,  234,    2, 0x06 /* Public */,
+       1,    1,  237,    2, 0x06 /* Public */,
+       3,    1,  240,    2, 0x06 /* Public */,
+       4,    1,  243,    2, 0x06 /* Public */,
+       4,    1,  246,    2, 0x06 /* Public */,
+       5,    1,  249,    2, 0x06 /* Public */,
+       6,    1,  252,    2, 0x06 /* Public */,
+       6,    1,  255,    2, 0x06 /* Public */,
+       7,    1,  258,    2, 0x06 /* Public */,
+       8,    1,  261,    2, 0x06 /* Public */,
+       8,    1,  264,    2, 0x06 /* Public */,
+       9,    1,  267,    2, 0x06 /* Public */,
+      10,    1,  270,    2, 0x06 /* Public */,
+      10,    1,  273,    2, 0x06 /* Public */,
+      11,    1,  276,    2, 0x06 /* Public */,
+      12,    1,  279,    2, 0x06 /* Public */,
+      12,    1,  282,    2, 0x06 /* Public */,
+      13,    1,  285,    2, 0x06 /* Public */,
+      14,    1,  288,    2, 0x06 /* Public */,
+      14,    1,  291,    2, 0x06 /* Public */,
+      15,    1,  294,    2, 0x06 /* Public */,
+      16,    1,  297,    2, 0x06 /* Public */,
+      16,    1,  300,    2, 0x06 /* Public */,
+      17,    1,  303,    2, 0x06 /* Public */,
+      18,    1,  306,    2, 0x06 /* Public */,
+      18,    1,  309,    2, 0x06 /* Public */,
+      19,    1,  312,    2, 0x06 /* Public */,
+      20,    1,  315,    2, 0x06 /* Public */,
+      20,    1,  318,    2, 0x06 /* Public */,
+      21,    1,  321,    2, 0x06 /* Public */,
+      22,    1,  324,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      24,    1,  337,    2, 0x0a /* Public */,
-      26,    1,  340,    2, 0x0a /* Public */,
-      27,    1,  343,    2, 0x0a /* Public */,
-      28,    1,  346,    2, 0x0a /* Public */,
-      30,    1,  349,    2, 0x0a /* Public */,
-      31,    1,  352,    2, 0x0a /* Public */,
-      32,    1,  355,    2, 0x0a /* Public */,
-      33,    1,  358,    2, 0x0a /* Public */,
-      34,    1,  361,    2, 0x0a /* Public */,
-      35,    1,  364,    2, 0x0a /* Public */,
-      36,    1,  367,    2, 0x0a /* Public */,
-      37,    1,  370,    2, 0x0a /* Public */,
-      38,    1,  373,    2, 0x0a /* Public */,
-      39,    0,  376,    2, 0x0a /* Public */,
-      40,    0,  377,    2, 0x0a /* Public */,
+      24,    1,  327,    2, 0x0a /* Public */,
+      26,    1,  330,    2, 0x0a /* Public */,
+      27,    1,  333,    2, 0x0a /* Public */,
+      28,    1,  336,    2, 0x0a /* Public */,
+      30,    1,  339,    2, 0x0a /* Public */,
+      31,    1,  342,    2, 0x0a /* Public */,
+      32,    1,  345,    2, 0x0a /* Public */,
+      33,    1,  348,    2, 0x0a /* Public */,
+      34,    1,  351,    2, 0x0a /* Public */,
+      35,    1,  354,    2, 0x0a /* Public */,
+      36,    1,  357,    2, 0x0a /* Public */,
+      37,    1,  360,    2, 0x0a /* Public */,
+      38,    1,  363,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QReal,    2,
@@ -201,8 +197,6 @@ static const uint qt_meta_data_Validator[] = {
     QMetaType::Void, QMetaType::QString,   29,
     QMetaType::Void, QMetaType::QString,   29,
     QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void,
-    QMetaType::Void,
 
        0        // eod
 };
@@ -257,8 +251,6 @@ void Validator::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 41: _t->mxmBRowsEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 42: _t->mxmBColsEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 43: _t->mxmBValsEdited((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 44: _t->mxmSubmitted(); break;
-        case 45: _t->sxmSubmitted(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -509,13 +501,13 @@ int Validator::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 46)
+        if (_id < 44)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 46;
+        _id -= 44;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 46)
+        if (_id < 44)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 46;
+        _id -= 44;
     }
     return _id;
 }
