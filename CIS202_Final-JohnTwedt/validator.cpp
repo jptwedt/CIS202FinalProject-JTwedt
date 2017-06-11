@@ -1,13 +1,6 @@
 #include "validator.h"
 #include <QDebug>
 
-/*
-void Validator::clearAll()
-{
-   mxmRows = 0;
-   mxmCols = 0;
-}
-*/
 Validator::Validator(QObject *parent){
    patternMap = new QMap<QString, QRegularExpression*>;
    place = patternMap->begin();
@@ -107,24 +100,24 @@ void Validator::getFieldNames(const QList<QString> *fieldNames)
 void Validator::addToggled(bool toggle)
 {
    addSelected = toggle;
-   qDebug() << addSelected << " is value for add in validator.";
+   //qDebug() << addSelected << " is value for add in validator.";
 }
 
 void Validator::subtractToggled(bool toggle)
 {
    subtractSelected = toggle;
-   qDebug() << subtractSelected << " is value for subtract in validator.";
+   //qDebug() << subtractSelected << " is value for subtract in validator.";
 }
 
 void Validator::multiplyToggled(bool toggle)
 {
    multiplySelected = toggle;
-   qDebug() << multiplySelected << " is value for multiply in validator.";
+   //qDebug() << multiplySelected << " is value for multiply in validator.";
 }
 
 void Validator::sxmScalarEdited(const QString &entry)
 {
-   qDebug() << entry << " has been sent to the validator sxmScalarEdited.";
+   //qDebug() << entry << " has been sent to the validator sxmScalarEdited.";
    QRegularExpressionMatch m = (*patternMap)["lineEditSxMScalar"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
@@ -149,14 +142,14 @@ void Validator::sxmScalarEdited(const QString &entry)
 
 void Validator::sxmRowsEdited(const QString &entry)
 {
-   qDebug() << entry << " has been sent to the validator sxmRowsEdited.";
+   //qDebug() << entry << " has been sent to the validator sxmRowsEdited.";
    QRegularExpressionMatch m = (*patternMap)["lineEditSxMRows"]->match(entry);
    if(m.hasMatch()){
        //qDebug() << m.captured(0);
        if(m.captured(0) == entry && m.captured(0).toInt() <= constants::MAX_ROWS){
           emit sxmRowsGood(m.captured(0).toInt());
           emit sxmRowsGood(true);
-          qDebug() << m.captured(0) << " being sent from validator.";
+          //qDebug() << m.captured(0) << " being sent from validator.";
        }
        else if(entry.isEmpty()){
           emit sxmRowsNoGood("");

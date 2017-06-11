@@ -17,9 +17,6 @@
  * communicating with all layers as it does so.
  */
 
-extern const int MAX_ROWS;   //these are just hard-coded in to prevent ridiculous entries
-extern const int MAX_COLS;
-
 class Validator : public QObject{
    Q_OBJECT
 private:
@@ -30,7 +27,6 @@ private:
    bool sxmSubmitEnabled, mxmSubmitEnabled,sxmSelected,mxmSelected,addSelected,
       subtractSelected,multiplySelected;
    QStringList sxmVals, mxmAVals, mxmBVals;
-   //void clearAll();
 public:
    explicit Validator(QObject *parent = 0);
    ~Validator();
@@ -45,7 +41,6 @@ public:
    void setFloatPrecision(int value);
 
 public slots:
-   //void processChanged();
    void addToggled(bool toggle);
    void subtractToggled(bool toggle);
    void multiplyToggled(bool toggle);
@@ -94,4 +89,4 @@ signals:
    void errorMsg(const QString &msg);
 };
 
-#endif // REGEXPREPO_H
+#endif // VALIDATOR_H

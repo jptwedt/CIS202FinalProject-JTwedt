@@ -279,7 +279,7 @@ void Matrix::autofillA()
    for(int i = 0; i < m_rowsa; ++i){
       m_matrixA[i] = new qreal[m_colsa];
       for(int j = 0; j < m_colsa; ++j){
-         m_matrixA[i][j] = (double)(qrand() % 200 - 100);
+         m_matrixA[i][j] = (double)(qrand() % 20 - 10);
          temp = temp + " " + QString::number(m_matrixA[i][j]);
       }
    }
@@ -297,7 +297,7 @@ void Matrix::autofillB()
    for(int i = 0; i < m_rowsb; ++i){
       m_matrixB[i] = new qreal[m_colsb];
       for(int j = 0; j < m_colsb; ++j){
-        m_matrixB[i][j] = (double)(qrand() % 200 - 100);
+        m_matrixB[i][j] = (double)(qrand() % 20 - 10);
         temp = temp + " " + QString::number(m_matrixB[i][j]);
       }
    }
@@ -351,10 +351,11 @@ void Matrix::mxmSubmitted()
          for(int i = 0; i < m_rowsr; ++i){
              m_matrixR[i] = new qreal[m_colsr];
              for(int j = 0; j < m_colsr; ++j){
+                 qreal temp = 0;
                  for(int x = 0; x < m_colsa; ++x){
-                    m_matrixR[i][j] = (m_matrixA[i][x] * m_matrixB[x][j]);
-                    matrixRVals << QString::number(m_matrixR[i][j]);
+                    temp += (m_matrixA[i][x] * m_matrixB[x][j]);
                  }
+                 matrixRVals << QString::number(temp);
              }
          }
       }

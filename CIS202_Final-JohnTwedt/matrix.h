@@ -27,7 +27,6 @@ private:
 
 public:
    explicit Matrix(QObject *parent = 0);                        //default constructor
-   //explicit Matrix(QObject *parent = 0,int rows, int cols);      //constructor
    ~Matrix();                       //destructor
    void emptyMatrix();
    void emptyMatrixA();
