@@ -10,3 +10,10 @@ doing what it was supposed to do.
 I opted for a sort of "layer" architecture because I didn't want everything to be handled in "mainwindow.cpp."  I can think of
 so many better ways to implement this, but I kept going back and forth between different ideas so I just finally stuck with one.
 Hence the inconsistencies between, say, using QStringLists for storage in some parts, and "QList<QString> in others, and QMap<QString, QString> or QMap<QString,QRegularExpression>...
+
+# Instructor Comments
+  - overall this was a noble effort.  I had a little trouble figuring out the interface, but looking at the code, you have the
+  correct algorithms for calculating matrices.  The code compiled, ran and met the requirement.  
+
+# Grade
+100/100
